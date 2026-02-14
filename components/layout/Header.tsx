@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { CaretDown, List, X } from "@phosphor-icons/react";
 import { motion, AnimatePresence } from "framer-motion";
 
