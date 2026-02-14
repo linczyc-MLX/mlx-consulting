@@ -1,17 +1,19 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import {
   Phone,
   Envelope,
   MapPin,
   Clock,
   LinkedinLogo,
+  DownloadSimple,
 } from "@phosphor-icons/react";
 
 export function Footer() {
   return (
-    <footer className="bg-dark-alt text-text-on-dark py-16 px-[50px]">
+    <footer className="bg-dark-alt text-text-on-dark py-16 px-6 md:px-[50px]">
       {/* Tagline */}
       <p className="text-[18px] font-medium tracking-[-0.18px] mb-12 max-w-md">
         Leadership in Real Estate Development, Design and Construction
@@ -23,19 +25,19 @@ export function Footer() {
         <div>
           <div className="flex items-center gap-2 mb-3">
             <Phone size={18} className="text-accent-orange" />
-            <span className="text-overline font-bold uppercase tracking-wide text-xs">
+            <span className="font-bold uppercase tracking-wide text-xs">
               Phone
             </span>
           </div>
           <a
             href="tel:+12129603001"
-            className="block text-sm opacity-80 hover:opacity-100"
+            className="block text-sm opacity-80 hover:opacity-100 transition-opacity"
           >
             +1 (212) 960-3001
           </a>
           <a
             href="tel:+16462794845"
-            className="block text-sm opacity-80 hover:opacity-100"
+            className="block text-sm opacity-80 hover:opacity-100 transition-opacity"
           >
             +1 (646) 279-4845 (WhatsApp)
           </a>
@@ -45,13 +47,13 @@ export function Footer() {
         <div>
           <div className="flex items-center gap-2 mb-3">
             <Envelope size={18} className="text-accent-orange" />
-            <span className="text-overline font-bold uppercase tracking-wide text-xs">
+            <span className="font-bold uppercase tracking-wide text-xs">
               Email
             </span>
           </div>
           <a
             href="mailto:info@mlxconsulting.com"
-            className="text-sm opacity-80 hover:opacity-100"
+            className="text-sm opacity-80 hover:opacity-100 transition-opacity"
           >
             info@mlxconsulting.com
           </a>
@@ -61,7 +63,7 @@ export function Footer() {
         <div>
           <div className="flex items-center gap-2 mb-3">
             <MapPin size={18} className="text-accent-orange" />
-            <span className="text-overline font-bold uppercase tracking-wide text-xs">
+            <span className="font-bold uppercase tracking-wide text-xs">
               Address
             </span>
           </div>
@@ -76,7 +78,7 @@ export function Footer() {
         <div>
           <div className="flex items-center gap-2 mb-3">
             <Clock size={18} className="text-accent-orange" />
-            <span className="text-overline font-bold uppercase tracking-wide text-xs">
+            <span className="font-bold uppercase tracking-wide text-xs">
               Opening Hours
             </span>
           </div>
@@ -84,33 +86,46 @@ export function Footer() {
         </div>
       </div>
 
+      {/* Brochure Download */}
+      <div className="mb-12">
+        <p className="text-sm opacity-60 mb-3">Download the MLX Brochure</p>
+        <button className="flex items-center gap-2 bg-accent-orange text-dark font-medium text-sm px-5 py-2.5 rounded-md hover:bg-accent-orange/90 transition-colors">
+          <DownloadSimple size={16} weight="bold" />
+          Download
+        </button>
+      </div>
+
       {/* Bottom bar */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pt-8 border-t border-white/10">
         <div className="flex items-center gap-4">
-          {/* Brochure download */}
-          <button className="flex items-center gap-2 bg-accent-orange text-dark font-medium text-sm px-5 py-2.5 rounded-md hover:bg-accent-orange/90 transition-colors">
-            Download
-          </button>
-
           {/* LinkedIn */}
           <a
             href="https://www.linkedin.com/in/mlinczyc/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-accent-orange transition-colors"
+            aria-label="LinkedIn"
           >
             <LinkedinLogo size={20} />
           </a>
         </div>
 
         <div className="flex items-center gap-4 text-xs opacity-60">
-          <Link href="/privacy-policy" className="hover:opacity-100">
+          <Link href="/privacy-policy" className="hover:opacity-100 transition-opacity">
             Privacy Policy
           </Link>
-          <Link href="/terms" className="hover:opacity-100">
+          <Link href="/terms" className="hover:opacity-100 transition-opacity">
             Terms
           </Link>
           <span>&copy; MLX Consulting</span>
+          <a
+            href="http://redline.productions/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:opacity-100 transition-opacity"
+          >
+            A RedLine Production
+          </a>
         </div>
       </div>
     </footer>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { CaretDown, List, X } from "@phosphor-icons/react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -15,14 +16,14 @@ const navLinks = [
 ];
 
 const serviceLinks = [
-  { label: "D-VELOP360", href: "/services/d-velop360" },
-  { label: "Consulting Services", href: "/services/consulting-services" },
-  { label: "Master Planning & Design", href: "/services/master-planning-design" },
-  { label: "Development Management", href: "/services/architectural-design" },
-  { label: "Project & Construction Management", href: "/services/project-management" },
-  { label: "Not4Sale Residential Advisory", href: "/services/not4sale" },
-  { label: "Thought Leadership", href: "/services/thought-leadership" },
-  { label: "Creative and Branding", href: "/services/creative-branding" },
+  { label: "D-VELOP360", href: "/services#d-velop360" },
+  { label: "Consulting Services", href: "/services#consulting-services" },
+  { label: "Master Planning & Design", href: "/services#master-planning" },
+  { label: "Development Management", href: "/services#development-management" },
+  { label: "Project & Construction Management", href: "/services#project-construction" },
+  { label: "Not4Sale Residential Advisory", href: "/services#not4sale" },
+  { label: "Thought Leadership", href: "/services#thought-leadership" },
+  { label: "Creative and Branding", href: "/services#creative-branding" },
 ];
 
 export function Header() {
@@ -30,14 +31,17 @@ export function Header() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 flex items-center justify-between h-16 px-[50px] bg-cream/90 backdrop-blur-sm">
+    <nav className="sticky top-0 z-50 flex items-center justify-between h-16 px-6 md:px-[50px] bg-cream/90 backdrop-blur-sm border-b border-dark/5">
       {/* Logo */}
-      <Link href="/" aria-label="Company Logo">
-        {/* TODO: Replace with actual MLX logo */}
-        <div className="font-inter text-2xl font-medium tracking-tight">
-          <span className="text-dark">ml</span>
-          <span className="text-red-600 text-3xl font-bold">X</span>
-        </div>
+      <Link href="/" aria-label="MLX Consulting Home">
+        <Image
+          src="/images/mlx-logo.png"
+          alt="MLX Consulting"
+          width={80}
+          height={40}
+          className="h-8 w-auto"
+          priority
+        />
       </Link>
 
       {/* Desktop Nav */}
@@ -69,7 +73,6 @@ export function Header() {
                   >
                     {/* Left panel — CTA */}
                     <div className="relative w-[300px] p-8 bg-dark text-text-on-dark flex flex-col justify-end">
-                      {/* TODO: Add staircase background image */}
                       <p className="text-sm opacity-70 mb-2">
                         Custom services? Special requests?
                       </p>
@@ -91,6 +94,7 @@ export function Header() {
                         <Link
                           key={service.href}
                           href={service.href}
+                          onClick={() => setIsDropdownOpen(false)}
                           className="block px-6 py-3 text-dark text-[15px] font-medium hover:bg-cream transition-colors border-b border-cream/50 last:border-b-0"
                         >
                           {service.label}
