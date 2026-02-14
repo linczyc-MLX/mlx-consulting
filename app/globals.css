@@ -1,45 +1,27 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* ============================================
    MLX Consulting — Design Tokens
    Extracted from mlxconsulting.com (Framer)
    ============================================ */
 
-@theme {
+:root {
   /* Colors — Brand */
   --color-cream: #fffbf5;
   --color-cream-dark: #f7f2e9;
-  --color-cream-alt: #faf9f5;
-  --color-cream-olive: #fdfcee;
   --color-dark: #21201b;
   --color-dark-alt: #211f1a;
-  --color-dark-near: #141413;
   --color-accent-orange: #ff833b;
   --color-teal-dark: #1f3630;
-
-  /* Colors — Text */
   --color-text-primary: #21201b;
   --color-text-on-dark: #fffbf5;
 
-  /* Typography — Font Families */
-  --font-inter: "Inter", "Inter Placeholder", sans-serif;
-  --font-geist: "Geist", "Geist Placeholder", sans-serif;
+  /* Typography */
+  --font-inter: "Inter", sans-serif;
+  --font-geist: "Geist", sans-serif;
   --font-mono: "Fragment Mono", monospace;
-
-  /* Spacing */
-  --spacing-section-y: 100px;
-  --spacing-section-x: 50px;
-  --spacing-hero-top: 170px;
-
-  /* Border Radius */
-  --radius-sm: 4px;
-  --radius-md: 6px;
-  --radius-lg: 8px;
-  --radius-xl: 10px;
-  --radius-pill: 20px;
-
-  /* Shadows */
-  --shadow-orange-glow: 0px 1px 12px 10px rgb(255 131 59);
 }
 
 /* Base Styles */
