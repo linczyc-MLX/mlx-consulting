@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { motion, AnimatePresence } from "framer-motion";
-import { CaretDown, CaretUp, PaperPlaneTilt } from "@phosphor-icons/react";
+import { CaretDown, CaretUp, PaperPlaneTilt, Plus, Minus } from "@phosphor-icons/react";
 
 /* ─── Stats Data ─── */
 const stats = [
@@ -161,9 +161,9 @@ function Accordion({
 function FAQAccordion({ items }: { items: { q: string; a: string }[] }) {
   const [openIndex, setOpenIndex] = useState(-1);
   return (
-    <div className="space-y-0">
+    <div className="space-y-3">
       {items.map((item, i) => (
-        <div key={i} className="border-b border-dark/10">
+        <div key={i} className="border border-dark/10 rounded-xl px-5">
           <button
             onClick={() => setOpenIndex(openIndex === i ? -1 : i)}
             className="w-full flex items-center justify-between gap-4 py-5 text-left"
@@ -172,9 +172,9 @@ function FAQAccordion({ items }: { items: { q: string; a: string }[] }) {
               {item.q}
             </span>
             {openIndex === i ? (
-              <CaretUp size={18} className="text-dark/40 shrink-0" />
+              <Minus size={20} className="text-dark/40 shrink-0" />
             ) : (
-              <CaretDown size={18} className="text-dark/40 shrink-0" />
+              <Plus size={20} className="text-dark/40 shrink-0" />
             )}
           </button>
           <AnimatePresence>
@@ -230,14 +230,14 @@ export default function HomePage() {
       </section>
 
       {/* ───── 2. STATS BAR ───── */}
-      <section className="bg-dark py-6 px-6 md:px-[50px]">
+      <section className="bg-dark py-10 px-6 md:px-[50px]">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <p className="text-accent-orange text-[36px] md:text-[48px] font-medium tracking-tight font-mono">
+            <div key={stat.label} className="border-b border-white/10 pb-4">
+              <p className="text-cream text-[38px] md:text-[48px] font-normal tracking-tight font-[family-name:var(--font-geist-sans)]">
                 {stat.value}
               </p>
-              <p className="text-text-on-dark/70 text-[13px] tracking-[-0.26px]">
+              <p className="text-cream/70 text-[13px] tracking-[-0.26px] mt-1">
                 {stat.label}
               </p>
             </div>
@@ -424,21 +424,23 @@ export default function HomePage() {
       </section>
 
       {/* ───── 8. SERVICES OVERVIEW ───── */}
-      <section className="py-[80px] md:py-[100px] px-6 md:px-[50px] bg-cream">
+      <section className="py-[80px] md:py-[100px] px-6 md:px-[50px] bg-dark">
         <ScrollReveal>
-          <span className="text-xs font-bold uppercase tracking-widest text-dark/50 mb-2 block">
-            Our Services
-          </span>
-          <h2 className="mb-4 max-w-2xl">
-            Explore our services and see how we bring creativity and expertise to
-            every project
-          </h2>
-          <Link
-            href="/services"
-            className="inline-block mb-10 text-accent-orange font-medium text-[15px] hover:underline"
-          >
-            Explore All Services &rarr;
-          </Link>
+          <div className="text-center max-w-2xl mx-auto">
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 border border-white/20 rounded-full text-xs font-bold uppercase tracking-widest text-white/60 mb-4">
+              OUR SERVICES
+            </span>
+            <h2 className="mb-6 text-cream">
+              Explore our services and see how we bring creativity and expertise to
+              every project
+            </h2>
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 bg-accent-orange text-white font-medium text-[15px] px-6 py-3 rounded-full hover:bg-accent-orange/90 transition-colors"
+            >
+              Explore All Services &rarr;
+            </Link>
+          </div>
         </ScrollReveal>
       </section>
 
@@ -465,29 +467,41 @@ export default function HomePage() {
                 we&apos;ll be happy to help!
               </p>
               <form className="space-y-4">
-                <input
-                  type="text"
-                  placeholder="Name"
-                  className="w-full px-4 py-3 rounded-lg border border-dark/10 bg-white text-[15px] focus:outline-none focus:border-accent-orange transition-colors"
-                />
-                <input
-                  type="tel"
-                  placeholder="Phone"
-                  className="w-full px-4 py-3 rounded-lg border border-dark/10 bg-white text-[15px] focus:outline-none focus:border-accent-orange transition-colors"
-                />
-                <input
-                  type="email"
-                  placeholder="Email"
-                  className="w-full px-4 py-3 rounded-lg border border-dark/10 bg-white text-[15px] focus:outline-none focus:border-accent-orange transition-colors"
-                />
-                <textarea
-                  placeholder="Message"
-                  rows={4}
-                  className="w-full px-4 py-3 rounded-lg border border-dark/10 bg-white text-[15px] focus:outline-none focus:border-accent-orange transition-colors resize-none"
-                />
+                <div>
+                  <label className="block text-[12px] font-bold uppercase tracking-wider text-dark/80 mb-1.5">NAME</label>
+                  <input
+                    type="text"
+                    placeholder="Jane Smith"
+                    className="w-full px-4 py-3 rounded-lg border border-dark/10 bg-white text-[15px] focus:outline-none focus:border-accent-orange transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[12px] font-bold uppercase tracking-wider text-dark/80 mb-1.5">PHONE</label>
+                  <input
+                    type="tel"
+                    placeholder="(123) 456-7890"
+                    className="w-full px-4 py-3 rounded-lg border border-dark/10 bg-white text-[15px] focus:outline-none focus:border-accent-orange transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[12px] font-bold uppercase tracking-wider text-dark/80 mb-1.5">EMAIL</label>
+                  <input
+                    type="email"
+                    placeholder="jane@gmail.com"
+                    className="w-full px-4 py-3 rounded-lg border border-dark/10 bg-white text-[15px] focus:outline-none focus:border-accent-orange transition-colors"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[12px] font-bold uppercase tracking-wider text-dark/80 mb-1.5">MESSAGE</label>
+                  <textarea
+                    placeholder="Write your message here"
+                    rows={4}
+                    className="w-full px-4 py-3 rounded-lg border border-dark/10 bg-white text-[15px] focus:outline-none focus:border-accent-orange transition-colors resize-none"
+                  />
+                </div>
                 <button
                   type="submit"
-                  className="w-full bg-dark text-white font-medium text-[15px] py-3 rounded-lg hover:bg-dark/90 transition-colors"
+                  className="w-full bg-accent-orange text-white font-medium text-[15px] py-3 rounded-lg hover:bg-accent-orange/90 transition-colors"
                 >
                   Send Message
                 </button>

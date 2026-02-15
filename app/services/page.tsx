@@ -126,13 +126,25 @@ const serviceCards: ServiceCard[] = [
   },
 ];
 
+/* ─── Anchor ID map for service cards (matches Header dropdown links) ─── */
+const anchorIds: Record<string, string> = {
+  "D-VELOP360": "d-velop360",
+  "Consulting Services": "consulting-services",
+  "Master Planning & Design": "master-planning",
+  "Development Management": "development-management",
+  "Project & Construction Management": "project-construction",
+  "Not4Sale Residential Advisory": "not4sale",
+  "Thought Leadership": "thought-leadership",
+  "Creative and Branding": "creative-branding",
+};
+
 /* ─── Expandable Service Card Component ─── */
 function ServiceCardItem({ card, index }: { card: ServiceCard; index: number }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <ScrollReveal delay={index % 2 === 0 ? 0 : 0.15}>
-      <div className="bg-cream-dark rounded-xl p-[15px] h-full flex flex-col">
+      <div id={anchorIds[card.title]} className="bg-cream-dark rounded-xl p-[15px] h-full flex flex-col scroll-mt-20">
         {/* Card Header */}
         <div className="flex-1">
           <Link href={card.href}>
