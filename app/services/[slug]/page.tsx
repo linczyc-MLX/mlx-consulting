@@ -2,10 +2,19 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import ServiceDetailClient from "./ServiceDetailClient";
 
-/* ─── Service Data ─── */
+/* ─── Interfaces ─── */
 export interface SubService {
   title: string;
   description: string;
+}
+
+export interface MediaItem {
+  title: string;
+  tagline: string;
+  backgroundImage: string;
+  pdfUrl?: string;
+  videoUrl?: string;
+  comingSoon?: boolean;
 }
 
 export interface ServiceData {
@@ -13,128 +22,251 @@ export interface ServiceData {
   title: string;
   tagline: string;
   description: string;
-  extendedDescription: string;
+  extendedDescription?: string;
   heroImage: string;
+  exploreText?: string;
   subServices: SubService[];
+  mediaItems?: MediaItem[];
+  footerText?: string;
+  footerImage?: string;
 }
 
+/* ─── Service Data ─── */
 const services: ServiceData[] = [
+  /* ══════════════════════════════════════════
+     1. D-VELOP360
+     ══════════════════════════════════════════ */
   {
     slug: "d-velop360",
     title: "D-VELOP360",
-    tagline: "End-to-end development oversight from vision to delivery.",
-    heroImage: "/images/pier66-hero.jpg",
+    tagline: "Collaboration. Innovation. Execution.",
+    heroImage:
+      "https://framerusercontent.com/images/ZlqbNTqJA0Y4kwjo5DX7TquzzA.png",
     description:
-      "A comprehensive, end-to-end development oversight model that covers every phase of real estate development, from vision to delivery. D-VELOP360 ensures alignment across all disciplines, stakeholders, and timelines to maximize value and minimize risk.",
-    extendedDescription:
-      "D-VELOP360 is our flagship service model — a fully integrated approach to development management that places an Executive Development Officer (EDO) at the center of your project. The EDO acts as the single point of accountability, orchestrating every discipline from design and construction to branding and sales. Whether you\u2019re building a branded residence, a mixed-use destination, or a hospitality-driven development, D-VELOP360 provides the strategic framework to deliver on time, on budget, and beyond expectations.",
+      "The best laid plans of Owners, Developers and Investors fall apart when the critical element of alignment between all stakeholders within the project team is not optimized. The Executive Development Officer serves as the vital link between development, sales, marketing, hospitality operations, and asset management teams in complex mixed-use luxury projects.",
+    exploreText:
+      "Explore the D-VELOP360 services led by the Executive Development Officer and their practical application to a diverse range of project types:",
     subServices: [
       {
-        title: "The Role of THE EDO",
+        title: "Executive Development Officer",
         description:
-          "An Executive Development Officer serves as the single point of accountability across all project disciplines, coordinating design, construction, branding, and operations to ensure seamless execution.",
+          "The EDO at the heart of alignment and execution across all project disciplines.",
       },
       {
-        title: "Branded Residential",
+        title: "Branded Luxury Residential",
         description:
-          "Strategic advisory for branded residential developments, leveraging hotel brand partnerships to enhance value, marketability, and the resident experience.",
+          "Delivering optimal returns with visionary lifestyles and environments.",
       },
       {
-        title: "Condominium Developments",
+        title: "Luxury Condominium",
         description:
-          "Full-cycle condominium development oversight from feasibility and design through sales strategy, construction management, and unit delivery.",
+          "The EDO led D360 workflow applied to a multi-tower development.",
       },
       {
         title: "Hospitality Mixed-Use",
         description:
-          "Integrated planning for mixed-use developments that combine hotels, residences, retail, and dining into cohesive, market-leading destinations.",
+          "A structured, strategic approach to superior profits and execution.",
       },
     ],
+    mediaItems: [
+      {
+        title: "Executive Development Officer",
+        tagline:
+          "The EDO Role — The Executive Development Officer at the heart of alignment and execution.",
+        backgroundImage:
+          "https://framerusercontent.com/images/Xdafu8WKasAiLUkF6rZCtBW67g.jpeg",
+        pdfUrl: "http://do-great.work/PRESENTATIONS/D360/EDO.pdf",
+        videoUrl: "http://do-great.work/PRESENTATIONS/D360/EDO.mp4",
+      },
+      {
+        title: "Branded Luxury Residential",
+        tagline:
+          "Branded Residential — Delivering optimal returns with visionary lifestyles and environments.",
+        backgroundImage:
+          "https://framerusercontent.com/images/ayQxVltDlVODw5oSQ0ph4Ymjok.jpeg",
+        pdfUrl: "http://do-great.work/PRESENTATIONS/D360/Branded.pdf",
+        videoUrl: "http://do-great.work/PRESENTATIONS/D360/Branded.mp4",
+      },
+      {
+        title: "Luxury Condominium",
+        tagline:
+          "Residential Condominiums — The EDO led D360 workflow applied to a multi-tower development.",
+        backgroundImage:
+          "https://framerusercontent.com/images/fdvO8vlejCFyTbRy8Zt4T9EB5U.jpeg",
+        pdfUrl: "http://do-great.work/PRESENTATIONS/D360/Condo.pdf",
+        videoUrl: "http://do-great.work/PRESENTATIONS/D360/Condo.mp4",
+      },
+      {
+        title: "Hospitality Mixed-Use",
+        tagline:
+          "Hospitality Mixed-Use — A structured, strategic approach to superior profits and execution.",
+        backgroundImage:
+          "https://framerusercontent.com/images/mjcbUqd5iYWulweLhjNWd8ZQ1DU.jpeg",
+        pdfUrl: "http://do-great.work/PRESENTATIONS/D360/Mixed.pdf",
+        videoUrl: "http://do-great.work/PRESENTATIONS/D360/Mixed.mp4",
+      },
+      {
+        title: "The Future of Hospitality",
+        tagline:
+          "Disruption and Opportunity. Adapt. Or be left behind.",
+        backgroundImage:
+          "https://framerusercontent.com/images/p2nUEESIxWqJCgktt35OEmkLHro.jpeg",
+        pdfUrl: "http://Do-Great.Work/PRESENTATIONS/THINK/The Future.pdf",
+        videoUrl: "http://Not-4.sale/VMX.mp4",
+      },
+      {
+        title: "Development & Integration",
+        tagline:
+          "Synthesis replaces Specialization as Developers navigate the changing landscape.",
+        backgroundImage:
+          "https://framerusercontent.com/images/m2SjhDn88S9ey03RWLHsJho2Pgc.jpg",
+        pdfUrl: "http://Do-Great.Work/PRESENTATIONS/THINK/Integrate.pdf",
+        videoUrl: "http://Do-Great.Work/PRESENTATIONS/THINK/Integrate.mp4",
+      },
+    ],
+    footerText:
+      "D-VELOP is just one example of how MLX Consulting continually strives to innovate while staying true to our core mission to add measurable value to every project with integrity, determination and a collaborative spirit that is engaging and supportive.",
+    footerImage:
+      "https://framerusercontent.com/images/xTIaR6AHMNg57L9F2WI2vnyynHY.png",
   },
+
+  /* ══════════════════════════════════════════
+     2. CONSULTING SERVICES
+     ══════════════════════════════════════════ */
   {
     slug: "consulting-services",
     title: "Consulting Services",
     tagline: "Expert guidance at every step of your project.",
-    heroImage: "/images/consultation.jpg",
+    heroImage:
+      "https://framerusercontent.com/images/5F7Kzjt5sSdPDBr2sbjqN3gn5T4.jpg",
     description:
-      "Expert guidance at every step. Whether you need a second opinion on building codes, a fresh eye on design concepts, or a detailed cost analysis, our consulting team brings decades of experience to the table.",
+      "Navigating the development world can be overwhelming, but you don\u2019t have to do it alone. Our consulting services provide expert advice, insights, and tailored strategies to make your projects more efficient, sustainable, and aligned with your vision. We\u2019re here to guide, support, and empower you every step of the way.",
     extendedDescription:
-      "Our consulting services are designed for developers, investors, and owners who need specialized expertise without the commitment of a full development management engagement. From early-stage feasibility analysis to mid-project design reviews, we provide the insight and oversight you need to make informed decisions and keep your project on track.",
+      "Our consulting services are designed to provide strategic insights and expert guidance, empowering clients to make informed decisions that enhance their project outcomes and overall business performance.",
     subServices: [
       {
-        title: "Code Consultation",
+        title: "Market Research and Analysis",
         description:
-          "Expert review of building codes, zoning regulations, and compliance requirements to identify potential challenges early and ensure a smooth approval process.",
+          "In-depth market research helps clients understand trends, demographics, and competitive landscapes, informing strategic decisions.",
       },
       {
-        title: "Design & Concept Review",
+        title: "Investment Strategy Development",
         description:
-          "Independent assessment of architectural and interior design concepts, providing constructive feedback to optimize functionality, aesthetics, and market positioning.",
+          "Tailored investment strategies maximize returns and align with clients\u2019 financial goals and risk tolerance.",
       },
       {
-        title: "Technical Advisory Services",
+        title: "Asset Management and Optimization",
         description:
-          "Specialized technical guidance on structural systems, MEP engineering, building envelope performance, and emerging construction technologies.",
+          "Strategies to enhance the performance of real estate assets, ensuring they deliver optimal returns over time.",
       },
       {
-        title: "Cost Estimation & Budgeting",
+        title: "Operational Efficiency Consulting",
         description:
-          "Detailed cost analysis and budget development at every project phase, from conceptual estimates through construction-level budgets and value engineering.",
+          "Identifying inefficiencies within operations allows clients to streamline processes and reduce costs.",
       },
       {
-        title: "Project Feasibility Consulting",
+        title: "Branding and Marketing Strategy",
         description:
-          "Comprehensive feasibility studies evaluating market demand, financial viability, site constraints, and development potential to inform go/no-go decisions.",
+          "A strong brand and effective marketing strategy are essential for attracting target audiences and differentiating projects.",
+      },
+      {
+        title: "Financial Due Diligence and Valuation",
+        description:
+          "Conducting thorough due diligence ensures sound investment decisions based on accurate valuations and risk assessments.",
+      },
+      {
+        title: "Strategic Planning and Visioning",
+        description:
+          "Collaborating with clients to develop long-term strategies helps define objectives and chart a clear path forward.",
+      },
+      {
+        title: "Crisis Management and Recovery Planning",
+        description:
+          "Preparing for potential crises ensures clients can respond effectively to challenges, minimizing disruption and loss.",
+      },
+      {
+        title: "Training and Development for Staff",
+        description:
+          "Investing in staff training enhances organizational capabilities and fosters a culture of continuous improvement.",
+      },
+      {
+        title: "Technology Integration and Innovation",
+        description:
+          "Adopting innovative technologies can streamline operations and enhance project outcomes, keeping clients competitive.",
       },
     ],
   },
+
+  /* ══════════════════════════════════════════
+     3. MASTER PLANNING & DESIGN
+     ══════════════════════════════════════════ */
   {
     slug: "master-planning-design",
     title: "Master Planning & Design",
     tagline: "Creating cohesive visions that shape remarkable environments.",
-    heroImage: "/images/concept-development.png",
+    heroImage:
+      "https://framerusercontent.com/images/eDIeYxXqe5DuGuq5gAOGQUu4Ec0.jpg",
     description:
-      "From the big picture to the fine details, our master planning and design team creates cohesive visions that balance aesthetics, functionality, and sustainability to shape remarkable environments.",
+      "Our comprehensive strategy guarantees that each master plan and design is customized to create dynamic, livable environments that endure over time. By focusing on integrated and sustainable spaces, engaging stakeholders, and prioritizing transparent communication, we deliver projects that enhance the quality of life for vibrant communities.",
     extendedDescription:
-      "Great places don\u2019t happen by accident. Our master planning and design services bring together urban design, landscape architecture, interior planning, and sustainable strategies into a unified vision. We work at every scale \u2014 from entire districts and resort communities to individual buildings and public spaces \u2014 ensuring that each element contributes to a place that is vibrant, functional, and enduring.",
+      "Under our master planning and design services, we emphasize a holistic approach to creating innovative and functional spaces.",
     subServices: [
       {
-        title: "Conceptual Visualization Services",
+        title: "Comprehensive Site Analysis",
         description:
-          "High-impact visual storytelling through renderings, animations, and immersive presentations that bring your project vision to life for stakeholders and investors.",
+          "Understanding the physical and environmental characteristics of a site informs design choices and helps identify constraints or opportunities.",
       },
       {
-        title: "Zoning and Land Use Analysis",
+        title: "Conceptual Design Development",
         description:
-          "In-depth analysis of zoning codes, land use regulations, and entitlement pathways to maximize development potential and streamline the approval process.",
+          "Crafting innovative design concepts that reflect the vision of stakeholders while considering functionality and aesthetic appeal.",
       },
       {
-        title: "Sustainable Design Consulting",
+        title: "Land Use Planning",
         description:
-          "Integrating sustainable principles \u2014 from LEED and WELL certification strategies to passive design and renewable energy systems \u2014 into every aspect of the project.",
+          "Strategic land use planning optimizes the distribution of various functions within a development, promoting efficient use of space.",
       },
       {
-        title: "Public Space Design",
+        title: "Architectural Design Services",
         description:
-          "Designing plazas, promenades, parks, and gathering spaces that create a sense of place and foster community engagement.",
+          "Tailored architectural designs that meet functional requirements and resonate with desired brand identity and community character.",
       },
       {
-        title: "Adaptive Reuse Strategies",
+        title: "Landscape Architecture and Design",
         description:
-          "Reimagining existing structures for new purposes, preserving architectural heritage while creating modern, functional spaces that meet today\u2019s market demands.",
+          "Thoughtfully designed landscapes enhance appeal, creating inviting outdoor spaces that promote community engagement.",
       },
       {
-        title: "Landscape and Hardscape Design",
+        title: "Environmental Impact Assessments",
         description:
-          "Comprehensive landscape architecture that integrates planting, water features, lighting, and hardscape elements into a cohesive outdoor environment.",
+          "Evaluating potential environmental impacts ensures projects are sustainable and compliant with environmental regulations.",
       },
       {
-        title: "Interior Space Planning",
+        title: "Infrastructure Planning and Design",
         description:
-          "Strategic interior layouts that optimize flow, functionality, and user experience across residential, hospitality, and commercial spaces.",
+          "Planning for roads, utilities, and public amenities essential for supporting residents and businesses.",
+      },
+      {
+        title: "Space Planning and Interior Design",
+        description:
+          "Effective space planning maximizes usability, ensuring interior spaces are comfortable and efficient for all occupants.",
+      },
+      {
+        title: "Sustainability and Green Building",
+        description:
+          "Incorporating sustainable practices benefits the environment and leads to long-term cost savings for owners.",
+      },
+      {
+        title: "Community Engagement",
+        description:
+          "Actively involving the community in the planning process fosters goodwill and aligns development with community needs.",
       },
     ],
   },
+
+  /* ══════════════════════════════════════════
+     4. DEVELOPMENT MANAGEMENT
+     ══════════════════════════════════════════ */
   {
     slug: "development-management",
     title: "Development Management",
@@ -143,200 +275,406 @@ const services: ServiceData[] = [
     description:
       "We guide your project from concept to completion with strategic oversight, ensuring every decision aligns with your financial goals, timeline, and quality standards.",
     extendedDescription:
-      "Development management is the backbone of any successful real estate project. Our team provides the strategic leadership and day-to-day oversight needed to navigate the complexities of development \u2014 from pre-development feasibility and site selection through financial structuring, design management, construction oversight, and post-completion analysis. We act as an extension of your team, protecting your investment at every stage.",
+      "Development management is the backbone of any successful real estate project. Our team provides the strategic leadership and day-to-day oversight needed to navigate the complexities of development \u2014 from pre-development feasibility and site selection through financial structuring, design management, construction oversight, and post-completion analysis.",
     subServices: [
       {
         title: "Pre-Development Feasibility",
         description:
-          "Comprehensive analysis of market conditions, site potential, regulatory environment, and financial projections to validate your development concept before committing capital.",
+          "Comprehensive analysis of market conditions, site potential, regulatory environment, and financial projections to validate your development concept.",
       },
       {
         title: "Site Due Diligence",
         description:
-          "Thorough investigation of site conditions including environmental assessments, geotechnical studies, utility infrastructure, and access considerations.",
+          "Thorough investigation of site conditions including environmental assessments, geotechnical studies, utility infrastructure, and access.",
       },
       {
         title: "Financial Structuring Strategies",
         description:
-          "Advisory on capital structure, financing options, joint venture arrangements, and financial modeling to optimize returns and manage risk.",
+          "Advisory on capital structure, financing options, joint venture arrangements, and financial modeling to optimize returns.",
       },
       {
         title: "Community Impact Studies",
         description:
-          "Assessment of how your development will interact with the surrounding community, including traffic, environmental, economic, and social impact analyses.",
+          "Assessment of how your development will interact with the surrounding community, including traffic, environmental, and social impact analyses.",
       },
       {
         title: "Development Timeline Optimization",
         description:
-          "Strategic scheduling that identifies critical path activities, overlapping work streams, and acceleration opportunities to compress timelines without sacrificing quality.",
+          "Strategic scheduling that identifies critical path activities and acceleration opportunities to compress timelines without sacrificing quality.",
       },
       {
         title: "Value Engineering",
         description:
-          "Systematic analysis of design and construction elements to reduce costs while maintaining or improving quality, performance, and aesthetic standards.",
+          "Systematic analysis of design and construction elements to reduce costs while maintaining quality, performance, and aesthetics.",
       },
       {
         title: "Post-Completion Analysis",
         description:
-          "Comprehensive review of project outcomes versus initial projections, documenting lessons learned and providing insights for future developments.",
+          "Comprehensive review of project outcomes versus initial projections, documenting lessons learned for future developments.",
       },
     ],
   },
+
+  /* ══════════════════════════════════════════
+     5. PROJECT & CONSTRUCTION MANAGEMENT
+     ══════════════════════════════════════════ */
   {
     slug: "project-management",
     title: "Project & Construction Management",
     tagline: "Hands-on management that keeps your project on track.",
-    heroImage: "/images/designing.png",
+    heroImage:
+      "https://framerusercontent.com/images/6tc2k5oPDIhS5aqHzXzEtRYtiio.jpg",
     description:
-      "Hands-on management that keeps your project on track, on budget, and built to the highest standards. From scheduling to commissioning, we oversee every detail so you don\u2019t have to.",
+      "Clients can expect timely project delivery and strict adherence to budget and quality standards, while our rigorous quality assurance methods and reporting protocols ensure that construction sites operate smoothly and efficiently. By managing key aspects of the project and construction process, we reduce the burden on clients and allow them to focus on their core business activities.",
     extendedDescription:
-      "When it\u2019s time to build, you need a team that can translate great design into flawless execution. Our project and construction management services provide the hands-on leadership, technical expertise, and rigorous oversight needed to deliver complex projects safely, efficiently, and to the highest standards of quality. We manage the process so you can focus on the big picture.",
+      "Our Project and Construction Management approach is built on a foundation of meticulous planning and rigorous oversight. We employ advanced project management tools to develop detailed schedules and resource allocation plans that ensure optimal efficiency on-site.",
     subServices: [
       {
-        title: "Construction Scheduling & Phasing",
+        title: "Contractor Selection and Management",
         description:
-          "Detailed construction schedules with clear milestones, phasing strategies, and critical path analysis to keep the project moving forward efficiently.",
+          "Selecting the right contractors based on expertise, past performance, and alignment with project goals.",
       },
       {
-        title: "Procurement Management",
+        title: "Construction Budget Management",
         description:
-          "End-to-end procurement oversight including bid management, vendor qualification, contract negotiation, and supply chain coordination.",
+          "Careful monitoring of construction costs to prevent budget overruns and ensure effective resource allocation.",
       },
       {
-        title: "Quality Assurance Programs",
+        title: "Scheduling and Resource Allocation",
         description:
-          "Rigorous quality control frameworks with regular inspections, testing protocols, and documentation to ensure every element meets specification.",
+          "Efficient scheduling and resource management to maintain momentum and avoid delays on site.",
       },
       {
-        title: "Safety Training and Implementation",
+        title: "Quality Control Inspections",
         description:
-          "Comprehensive safety programs including site-specific safety plans, regular training sessions, and compliance monitoring to protect workers and the public.",
+          "Regular inspections to identify issues early, allowing prompt resolution and maintaining high standards.",
       },
       {
-        title: "Site Condition Monitoring",
+        title: "Safety Management and Compliance",
         description:
-          "Ongoing monitoring of site conditions, progress tracking, and issue identification to address challenges proactively before they impact the schedule or budget.",
-      },
-      {
-        title: "Final Walkthrough and Commissioning",
-        description:
-          "Systematic commissioning and punch-list management to ensure every system is tested, every detail is right, and the project is ready for occupancy.",
+          "Prioritizing safety to protect workers, minimize liability, and ensure compliance with industry standards.",
       },
       {
         title: "Change Order Management",
         description:
-          "Structured process for evaluating, negotiating, and processing change orders to protect the owner\u2019s interests while maintaining project momentum.",
+          "Managing changes carefully to minimize impact and ensure all modifications are documented and approved.",
+      },
+      {
+        title: "Progress Reporting and Documentation",
+        description:
+          "Keeping stakeholders informed through regular updates that foster transparency and accountability.",
+      },
+      {
+        title: "Coordination of Subcontractors",
+        description:
+          "Effective coordination among various trades and suppliers ensures smooth work and alignment with the project vision.",
+      },
+      {
+        title: "Punch List and Final Inspection",
+        description:
+          "Addressing minor issues before completion ensures a polished final product that meets or exceeds expectations.",
+      },
+      {
+        title: "Post-Construction Services",
+        description:
+          "Ongoing support after project completion to address any issues and ensure long-term client satisfaction.",
       },
     ],
   },
+
+  /* ══════════════════════════════════════════
+     6. NOT4SALE RESIDENTIAL ADVISORY
+     ══════════════════════════════════════════ */
   {
     slug: "not4sale",
     title: "Not4Sale Residential Advisory",
     tagline: "Bespoke advisory for discerning homeowners and investors.",
-    heroImage: "/images/gallery-1.jpg",
+    heroImage:
+      "https://framerusercontent.com/images/b0DYbrINvCMLcftTfNf8QUD4W48.png",
     description:
-      "A bespoke advisory service for discerning homeowners and investors seeking to acquire, renovate, or build luxury residences. We bring the same institutional-quality oversight to your private home as we do to large-scale developments.",
-    extendedDescription:
-      "Your home is your most personal investment. Not4Sale brings the discipline, expertise, and oversight of institutional-grade development management to the private residential sphere. Whether you\u2019re acquiring a new property, planning a major renovation, or building from the ground up, our team guides you through every decision \u2014 protecting your time, your budget, and your vision.",
+      "Traditional methods often lead to misalignment, costly revisions, and homes that fail to capture the essence of how clients truly live. We outline the critical role of market analysis in guiding the design and development of luxury residences. Our approach highlights the importance of understanding both the client\u2019s personal preferences and the broader market context.",
+    exploreText:
+      "Explore the Not4Sale services led by the Luxury Residential Advisory team and the curated process that leads to spectacular and profitable residences that exceed your expectations:",
     subServices: [
       {
-        title: "Luxury Home Acquisition Strategy",
+        title: "Luxury Residential Advisory",
         description:
-          "Strategic guidance on identifying, evaluating, and acquiring premium residential properties, including market analysis, property assessment, and negotiation support.",
+          "Your trusted partner for independent and expert guidance and support.",
       },
       {
-        title: "Property Assessment & Valuation",
+        title: "Know Your Client (LuxeBrief)",
         description:
-          "Independent evaluation of property condition, systems, and potential, providing a clear picture of what you\u2019re buying and what it will take to realize your vision.",
+          "A proven framework for designing luxury residences that fully cater to the unique tastes and lifestyles of discerning clients.",
       },
       {
-        title: "Design Visioning & Renovation Planning",
+        title: "Know Your Market",
         description:
-          "Collaborative design process to define the aesthetic, functional, and lifestyle goals for your home, translating them into a clear scope and actionable plan.",
+          "Market analyses that empower clients in making informed decisions about their luxury residences.",
       },
       {
-        title: "Vendor & Contractor Coordination",
+        title: "Find Your Inspiration (FYI)",
         description:
-          "Identifying, qualifying, and managing the right architects, designers, contractors, and specialty vendors to bring your vision to life.",
+          "Curated inspiration sourcing to align design vision with personal lifestyle aspirations.",
       },
       {
-        title: "Project Oversight for Private Residences",
+        title: "VisionMatrix (VisualMatriX)",
         description:
-          "Hands-on project management throughout construction and renovation, ensuring quality, timeline, and budget are maintained to the highest standards.",
+          "Cost and budget predictability and alignment without compromising creative vision.",
       },
     ],
+    mediaItems: [
+      {
+        title: "N4S Introduction",
+        tagline:
+          "Welcome to Not4Sale and a brief journey through the N4S ecosystem.",
+        backgroundImage:
+          "https://framerusercontent.com/images/izu8w3kpzS1ErudkzkvahEk1gJs.jpg",
+        pdfUrl: "http://Do-Great.Work/PRESENTATIONS/NFS/INTRO NFS.pdf",
+        videoUrl: "http://Do-Great.Work/PRESENTATIONS/NFS/INTRO NFS.mp4",
+      },
+      {
+        title: "Luxury Residential Advisory",
+        tagline:
+          "Your trusted partner to independent and expert guidance and support.",
+        backgroundImage:
+          "https://framerusercontent.com/images/8McQNVSrWeMs60lTcam3JumM.jpg",
+        pdfUrl: "http://Do-Great.Work/PRESENTATIONS/NFS/INTRO LRA.pdf",
+        videoUrl: "http://Do-Great.Work/PRESENTATIONS/NFS/INTRO LRA.mp4",
+      },
+      {
+        title: "Know Your Client (LuxeBrief)",
+        tagline:
+          "LuxeBrief offers a proven framework for designing luxury private residences that fully cater to the unique tastes and lifestyles of discerning clients.",
+        backgroundImage:
+          "https://framerusercontent.com/images/nZBgrX1Vy7AuMpOKrSOYlfoE.jpg",
+        pdfUrl: "http://Do-Great.Work/PRESENTATIONS/NFS/KYC.pdf",
+        videoUrl: "http://Do-Great.Work/PRESENTATIONS/NFS/KYC.mp4",
+      },
+      {
+        title: "Find Your Inspiration (FYI)",
+        tagline: "Find Your Inspiration",
+        backgroundImage:
+          "https://framerusercontent.com/images/A1qsQVY5shd73ej8pwn76m2vr0.jpg",
+        pdfUrl: "http://Do-Great.Work/PRESENTATIONS/NFS/FYI v2.pdf",
+        videoUrl: "http://Do-Great.Work/PRESENTATIONS/NFS/FYIv2.mp4",
+      },
+      {
+        title: "Mansion Validation Program (MVP)",
+        tagline:
+          "Ensuring the spatial relationships in your home design protect what matters most.",
+        backgroundImage:
+          "https://framerusercontent.com/images/b0DYbrINvCMLcftTfNf8QUD4W48.png",
+        pdfUrl: "http://Do-Great.Work/PRESENTATIONS/NFS/MVP.pdf",
+        videoUrl: "http://Do-Great.Work/PRESENTATIONS/NFS/MVP.mp4",
+      },
+      {
+        title: "Know Your Market",
+        tagline:
+          "Market analyses that empower clients in making informed decisions about their luxury residences.",
+        backgroundImage:
+          "https://framerusercontent.com/images/Wuu3q4WDIYmBu5M6uMwx3nA4D8.png",
+        pdfUrl: "http://Do-Great.Work/PRESENTATIONS/NFS/KYM.pdf",
+        videoUrl: "http://Do-Great.Work/PRESENTATIONS/NFS/KYM.mp4",
+      },
+      {
+        title: "Creative Alignment + Matchmaking",
+        tagline:
+          "Connecting clients with architects and designers based on individual preferences and lifestyle needs.",
+        backgroundImage:
+          "https://framerusercontent.com/images/HQQ3EXqKXPndXhJYyIZeGS2PqM8.jpg",
+        comingSoon: true,
+      },
+      {
+        title: "VisionMatrix (VisualMatriX)",
+        tagline:
+          "VisualMatriX delivers cost and budget predictability and alignment without compromising creative vision.",
+        backgroundImage:
+          "https://framerusercontent.com/images/RkERQ0jrB7gAeh1FyqFzC2mJpbU.jpg",
+        pdfUrl: "http://Do-Great.Work/PRESENTATIONS/NFS/VMX.pdf",
+        videoUrl: "http://Do-Great.Work/PRESENTATIONS/NFS/VMX.mp4",
+      },
+    ],
+    footerText:
+      "Not4Sale is another example of how MLX Consulting continually strives to innovate while staying true to our core mission to add measurable value to every project with integrity, determination and a collaborative spirit that is engaging and supportive.",
+    footerImage:
+      "https://framerusercontent.com/images/97X06X8GOgIUOs4anfI76Ytbo.png",
   },
+
+  /* ══════════════════════════════════════════
+     7. THOUGHT LEADERSHIP
+     ══════════════════════════════════════════ */
   {
     slug: "thought-leadership",
     title: "Thought Leadership",
-    tagline: "Sharing knowledge and shaping the future of the industry.",
-    heroImage: "/images/model-buildings.png",
+    tagline: "Ask The Right Questions. Have a Story to Tell. Get it Done.",
+    heroImage:
+      "https://framerusercontent.com/images/o74z2PJXRCjmue7npGdeAb3c1sI.jpeg",
     description:
-      "Sharing our knowledge and insights with the broader industry through speaking engagements, publications, and educational initiatives. We contribute to shaping the future of real estate development and design.",
+      "Our thought leadership addresses the tensions you navigate daily \u2014 balancing ROI targets against long-term capital appreciation, aligning developer and investor objectives with market conditions, and managing complex stakeholder workflows from Dallas to Dubai, Rome to Riyadh, and London to Abu Dhabi. We share the 360-degree insights that help you make confident decisions on deals worth $50M to $5B+.",
     extendedDescription:
-      "At MLX, we believe that advancing the industry advances everyone. Our thought leadership initiatives share the knowledge we\u2019ve accumulated over 25+ years of global development experience. Through keynote presentations, published research, market analysis, and educational programs, we contribute to meaningful conversations about the future of real estate, hospitality, and design.",
+      "Our Clients expect professionalism, discretion, and deep industry knowledge. By providing valuable, insightful content and original research, MLX positions itself as a reliable, authoritative source of information, encouraging trust and collaboration.",
+    exploreText:
+      "Thought Leadership is a critical additive for our real estate development services because it turns technical capability into market influence. By publishing forward-looking insights, case studies, and best practices, MLX demonstrates domain expertise and builds credibility with developers, investors, and public stakeholders.",
     subServices: [
       {
-        title: "Industry Speaking Engagements",
+        title: "The Seven Pillars",
         description:
-          "Keynote presentations and panel discussions at leading industry conferences, sharing insights on development trends, innovation, and best practices.",
+          "A comprehensive analysis of investment criteria models in the real world.",
       },
       {
-        title: "Published Research & White Papers",
+        title: "The Alignment Imperative",
         description:
-          "Original research and thought pieces on market dynamics, development strategies, and emerging trends in real estate, hospitality, and design.",
+          "Aligning stakeholders is the central metric in successful developments.",
       },
       {
-        title: "Market Trend Analysis",
+        title: "The Role of The EDO",
         description:
-          "Data-driven analysis of market trends, investment patterns, and consumer preferences to inform strategic decision-making.",
+          "Looking for Execution Excellence? The EDO leads the way.",
       },
       {
-        title: "Educational Workshops & Seminars",
+        title: "A Vision For A New City",
         description:
-          "Interactive learning sessions designed for industry professionals, investors, and emerging developers seeking to deepen their expertise.",
+          "Telosa seeks to redefine city living. A strategic vision of the future.",
       },
       {
-        title: "Strategic Industry Partnerships",
+        title: "Mind Robotics",
         description:
-          "Collaborative relationships with industry organizations, academic institutions, and research groups to advance knowledge and innovation.",
+          "Rivian expands its reach with a new manufacturing robotics campus.",
       },
     ],
+    mediaItems: [
+      {
+        title: "The Seven Pillars",
+        tagline:
+          "A comprehensive analysis of investment criteria models in the real world.",
+        backgroundImage:
+          "https://framerusercontent.com/images/26oTqylH8T8ejMAMEKrRBrmpIxM.jpeg",
+        pdfUrl: "http://Do-Great.Work/PRESENTATIONS/THINK/7 PILLARS.pdf",
+        videoUrl: "http://Do-Great.Work/PRESENTATIONS/THINK/7 PILLARS.mp4",
+      },
+      {
+        title: "The Alignment Imperative",
+        tagline:
+          "Aligning Stakeholders is the central metric in successful developments.",
+        backgroundImage:
+          "https://framerusercontent.com/images/xilkcHK1bclo8a6p97cAqJFzwD8.jpeg",
+        pdfUrl: "http://Do-Great.Work/PRESENTATIONS/THINK/Align.pdf",
+        videoUrl: "http://Do-Great.Work/PRESENTATIONS/THINK/Align.mp4",
+      },
+      {
+        title: "The Role of The EDO",
+        tagline:
+          "Looking for Execution Excellence? The EDO leads the way.",
+        backgroundImage:
+          "https://framerusercontent.com/images/Xdafu8WKasAiLUkF6rZCtBW67g.jpeg",
+        pdfUrl: "http://do-great.work/PRESENTATIONS/D360/EDO.pdf",
+        videoUrl: "http://do-great.work/PRESENTATIONS/D360/EDO.mp4",
+      },
+      {
+        title: "A Vision For A New City (Telosa)",
+        tagline:
+          "Telosa seeks to redefine city living. A strategic vision of the future.",
+        backgroundImage:
+          "https://framerusercontent.com/images/hjKOTk9uSTWB8AhQdXlXrSq1zj4.jpeg",
+        pdfUrl: "http://Do-Great.Work/PRESENTATIONS/THINK/Transform.pdf",
+        videoUrl: "http://Do-Great.Work/PRESENTATIONS/THINK/Transform.mp4",
+      },
+      {
+        title: "Mind Robotics (Rivian)",
+        tagline:
+          "Rivian expands its reach with a new manufacturing robotics campus.",
+        backgroundImage:
+          "https://framerusercontent.com/images/guSyXcb0xiQKlu5UQW4TDpKlwg.jpeg",
+        pdfUrl: "http://Do-Great.Work/PRESENTATIONS/THINK/Mind.pdf",
+      },
+      {
+        title: "The Future of Hospitality",
+        tagline:
+          "Disruption and Opportunity. Adapt. Or be left behind.",
+        backgroundImage:
+          "https://framerusercontent.com/images/p2nUEESIxWqJCgktt35OEmkLHro.jpeg",
+        pdfUrl: "http://Do-Great.Work/PRESENTATIONS/THINK/The Future.pdf",
+        videoUrl: "http://Not-4.sale/VMX.mp4",
+      },
+      {
+        title: "Development & Integration",
+        tagline:
+          "Synthesis replaces Specialization as Developers navigate the changing landscape.",
+        backgroundImage:
+          "https://framerusercontent.com/images/m2SjhDn88S9ey03RWLHsJho2Pgc.jpg",
+        pdfUrl: "http://Do-Great.Work/PRESENTATIONS/THINK/Integrate.pdf",
+        videoUrl: "http://Do-Great.Work/PRESENTATIONS/THINK/Integrate.mp4",
+      },
+    ],
+    footerText:
+      "Thought Leadership drives innovation and profitability as MLX Consulting continually strives to consistently surpass developer\u2019s and investor\u2019s expectations while staying true to our core mission to add measurable value to every project with integrity, determination and a collaborative spirit that is engaging and supportive.",
+    footerImage:
+      "https://framerusercontent.com/images/qUrJY2ybbyw2f1tXL6mAlKm0k58.png",
   },
+
+  /* ══════════════════════════════════════════
+     8. CREATIVE AND BRANDING
+     ══════════════════════════════════════════ */
   {
     slug: "creative-branding",
     title: "Creative and Branding",
     tagline: "Crafting distinctive identities for exceptional projects.",
-    heroImage: "/images/gallery-2.jpg",
+    heroImage:
+      "https://framerusercontent.com/images/ZvX0Mr8Wxmt5tcG0wHJ3zf9lxM.jpg",
     description:
-      "Every great project deserves a compelling story. Our creative and branding team crafts distinctive identities that capture the essence of your development and resonate with your target audience.",
+      "Our creative and branding services focus on developing distinctive identities and narratives for projects, ensuring that each development resonates with its target audience. This includes brand strategy, visual identity design, marketing collateral, and digital presence, aimed at creating a cohesive and compelling brand experience.",
     extendedDescription:
-      "In a competitive market, the projects that stand out are the ones with a clear, compelling identity. Our creative and branding team works alongside development, design, and sales teams to craft brand strategies that resonate with target audiences and differentiate your project in the marketplace. From visual identity and marketing collateral to digital presence and storytelling, we ensure your project makes an unforgettable impression.",
+      "In a competitive market, the projects that stand out are the ones with a clear, compelling identity. Our creative and branding team works alongside development, design, and sales teams to craft brand strategies that resonate with target audiences and differentiate your project in the marketplace.",
     subServices: [
       {
-        title: "Brand Strategy & Positioning",
+        title: "Brand Strategy Development",
         description:
-          "Defining the unique value proposition, target audience, and competitive positioning for your development to guide all marketing and communication efforts.",
+          "Crafting comprehensive strategies that define the brand\u2019s vision, mission, values, and unique selling propositions.",
       },
       {
-        title: "Visual Identity Development",
+        title: "Visual Identity Design",
         description:
-          "Creating logos, color palettes, typography systems, and design guidelines that establish a distinctive and cohesive visual presence.",
+          "Creating logos, color schemes, typography, and other visual elements that establish a cohesive brand image.",
       },
       {
-        title: "Marketing Collateral Design",
+        title: "Marketing Collateral Creation",
         description:
-          "Designing brochures, presentations, sales materials, and signage that communicate your project\u2019s story with clarity and sophistication.",
+          "Designing brochures, business cards, flyers, and other materials that effectively communicate the brand message.",
       },
       {
-        title: "Digital Presence & Web Design",
+        title: "Website Design and Development",
         description:
-          "Building compelling websites and digital experiences that showcase your project to prospective buyers, investors, and partners.",
+          "Building user-friendly and visually appealing websites that reflect brand identity and engage visitors.",
       },
       {
-        title: "Storytelling & Content Creation",
+        title: "Social Media Branding",
         description:
-          "Developing narrative content \u2014 from copywriting and photography to video production \u2014 that brings your project\u2019s story to life across all channels.",
+          "Developing tailored branding strategies for social media platforms, including profile design and engagement strategies.",
+      },
+      {
+        title: "Content Creation",
+        description:
+          "Producing high-quality written, visual, and multimedia content that aligns with the brand\u2019s voice.",
+      },
+      {
+        title: "Public Relations and Media Outreach",
+        description:
+          "Managing brand reputation through strategic communications, press releases, and media relationships.",
+      },
+      {
+        title: "Photography and Videography",
+        description:
+          "Professional photography and videography to create compelling visual narratives that showcase the brand.",
+      },
+      {
+        title: "Brand Guidelines Development",
+        description:
+          "Establishing detailed brand guidelines for consistent presentation across platforms and mediums.",
+      },
+      {
+        title: "Event Branding and Promotion",
+        description:
+          "Designing branding strategies for events including signage, promotional materials, and overall aesthetics.",
       },
     ],
   },
