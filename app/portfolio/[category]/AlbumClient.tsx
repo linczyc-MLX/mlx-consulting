@@ -43,85 +43,88 @@ export default function AlbumClient({ slug }: { slug: string }) {
         </ScrollReveal>
       </section>
 
-      {/* ───── PROJECT CARDS (with flipbook links) ───── */}
-      {category.projects.length > 0 && (
-        <section className="py-[20px] md:py-[40px] px-6 md:px-[50px] bg-cream">
-          <ScrollReveal>
-            <div className="space-y-5">
-              {category.projects.map((project, i) => (
-                <a
-                  key={i}
-                  href={project.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group block relative rounded-2xl overflow-hidden bg-dark"
-                >
-                  {/* Image collage background using category images */}
-                  <div className="relative aspect-[16/7] overflow-hidden">
-                    <Image
-                      src={category.previewImages[i % category.previewImages.length]}
-                      alt={project.title}
-                      fill
-                      className="object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500"
-                      sizes="(max-width: 768px) 100vw, 80vw"
-                    />
-                    {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/30 to-transparent" />
+      {/* ───── 2-COL IMAGE GRID (with flipbook links if available) ───── */}
+      <section className="py-[20px] md:py-[40px] px-6 md:px-[50px] bg-cream">
+        <ScrollReveal>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {category.projects.length > 0
+              ? category.projects.map((project, i) => (
+                  <a
+                    key={i}
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group block relative rounded-xl overflow-hidden"
+                  >
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <Image
+                        src={
+                          project.image ||
+                          category.previewImages[
+                            i % category.previewImages.length
+                          ]
+                        }
+                        alt={project.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                      {/* Gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-dark/70 via-dark/10 to-transparent" />
 
-                    {/* Project title at bottom */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6 flex items-end justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded bg-white/10 flex items-center justify-center">
-                          {project.type === "video" ? (
-                            <Play size={16} weight="fill" className="text-white" />
-                          ) : (
-                            <BookOpen size={16} weight="duotone" className="text-white" />
-                          )}
+                      {/* Project title at bottom */}
+                      <div className="absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
+                        <div className="flex items-center gap-2.5">
+                          <div className="w-7 h-7 rounded bg-white/15 flex items-center justify-center">
+                            {project.type === "video" ? (
+                              <Play
+                                size={14}
+                                weight="fill"
+                                className="text-white"
+                              />
+                            ) : (
+                              <BookOpen
+                                size={14}
+                                weight="duotone"
+                                className="text-white"
+                              />
+                            )}
+                          </div>
+                          <div>
+                            <h3 className="text-white text-[15px] md:text-[17px] font-medium leading-tight">
+                              {project.title}
+                            </h3>
+                            <p className="text-white/50 text-[11px] uppercase tracking-wider font-medium">
+                              {project.type === "video"
+                                ? "Watch Video"
+                                : "View Flipbook"}
+                            </p>
+                          </div>
                         </div>
-                        <div>
-                          <h3 className="text-white text-[18px] md:text-[22px] font-medium">
-                            {project.title}
-                          </h3>
-                          <p className="text-white/50 text-[12px] uppercase tracking-wider font-medium">
-                            {project.type === "video" ? "Watch Video" : "View Flipbook"}
-                          </p>
-                        </div>
+                        <span className="hidden md:inline-flex items-center gap-2 text-accent-orange text-[13px] font-medium opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+                          Open &rarr;
+                        </span>
                       </div>
-                      <span className="hidden md:inline-flex items-center gap-2 text-accent-orange text-[14px] font-medium opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all duration-300">
-                        Open &rarr;
-                      </span>
                     </div>
+                  </a>
+                ))
+              : category.previewImages.map((src, i) => (
+                  <div
+                    key={i}
+                    className="relative aspect-[4/3] rounded-xl overflow-hidden"
+                  >
+                    <Image
+                      src={src}
+                      alt={`${category.label} ${i + 1}`}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
                   </div>
-                </a>
-              ))}
-            </div>
-          </ScrollReveal>
-        </section>
-      )}
-
-      {/* ───── IMAGE GALLERY (for categories without projects) ───── */}
-      {category.projects.length === 0 && (
-        <section className="py-[20px] md:py-[40px] px-6 md:px-[50px] bg-cream">
-          <ScrollReveal>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {category.previewImages.map((src, i) => (
-                <div
-                  key={i}
-                  className="relative aspect-[4/3] rounded-xl overflow-hidden"
-                >
-                  <Image
-                    src={src}
-                    alt={`${category.label} ${i + 1}`}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-              ))}
-            </div>
-          </ScrollReveal>
-        </section>
-      )}
+                ))}
+          </div>
+        </ScrollReveal>
+      </section>
 
       {/* ───── OTHER ALBUMS ───── */}
       <section className="py-[60px] md:py-[80px] px-6 md:px-[50px] bg-cream border-t border-dark/5 mt-10">
