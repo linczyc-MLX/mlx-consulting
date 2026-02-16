@@ -1,3 +1,10 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Terms & Conditions | MLX Consulting",
+  description: "MLX Consulting terms and conditions for use of our website and services.",
+};
+
 export default function TermsPage() {
   return (
     <section className="pt-[170px] pb-[80px] md:pb-[100px] px-6 md:px-[50px] bg-cream">

@@ -1,113 +1,18 @@
-"use client";
+import { Metadata } from "next";
+import VideosClient from "./VideosClient";
 
-import { ScrollReveal } from "@/components/animations/ScrollReveal";
-import { Play } from "@phosphor-icons/react";
-
-/* ─── Video Data ─── */
-const videos = [
-  {
-    title: "Executive Development Officer",
+export const metadata: Metadata = {
+  title: "Videos | MLX Consulting",
+  description:
+    "Watch our project showcases and thought leadership videos on development management, branded residential, and luxury advisory services.",
+  openGraph: {
+    title: "Videos | MLX Consulting",
     description:
-      "What if the single smartest hire you make on a mixed-use project isn\u2019t another PM \u2014 it\u2019s an Executive Development Officer?",
-    brand: "MLX Consulting",
-    color: "bg-dark",
+      "Project showcases and thought leadership from MLX Consulting.",
+    type: "website",
   },
-  {
-    title: "Branded Luxury Residential Development",
-    description:
-      "Strategic investment intelligence for developers and investors evaluating branded residential opportunities across GCC markets.",
-    brand: "D-EVELOP360",
-    color: "bg-teal-dark",
-  },
-  {
-    title: "Independent Advisory Services",
-    description:
-      "Not4Sale is your trusted advisor for the owners, developers and investors looking to create luxury residential residences...",
-    brand: "Not4Sale",
-    color: "bg-dark-alt",
-  },
-  {
-    title: "Inspiring the next generation of creators",
-    description: "",
-    brand: "Trojena The Mountains of NEOM",
-    color: "bg-[#3a3528]",
-  },
-  {
-    title: "From Buyer to Resident",
-    description:
-      "Guiding the ultra high net worth individual, their families and advisors through the complex journey of designing a home...",
-    brand: "The Mountains of NEOM",
-    color: "bg-[#2c3530]",
-  },
-];
+};
 
-export default function VideosPage() {
-  return (
-    <>
-      {/* ───── HERO ───── */}
-      <section className="relative w-full min-h-screen overflow-hidden">
-        <ScrollReveal variant="scaleIn" className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-cream-dark to-cream" />
-        </ScrollReveal>
-
-        <div className="relative z-10 pt-[170px] px-6 md:px-[50px] pb-20">
-          <ScrollReveal variant="slideUp">
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 border border-dark/10 rounded-full text-xs font-bold uppercase tracking-widest text-dark/60 mb-6">
-              VIDEOS
-            </span>
-            <h1 className="max-w-4xl">
-              Our greatest achievements aren&apos;t just our projects&mdash;they&apos;re
-              the relationships and trust we&apos;ve built along the way.
-            </h1>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ───── VIDEO GRID ───── */}
-      <section className="py-[80px] md:py-[100px] px-6 md:px-[50px] bg-cream">
-        <ScrollReveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {videos.map((video, i) => (
-              <div
-                key={i}
-                className="group rounded-xl overflow-hidden bg-white border border-dark/5 transition-shadow hover:shadow-lg"
-              >
-                {/* Thumbnail placeholder with play button */}
-                <div
-                  className={`relative aspect-video ${video.color} flex items-center justify-center cursor-pointer`}
-                >
-                  {/* Decorative pattern lines */}
-                  <div className="absolute inset-0 opacity-10">
-                    <div className="absolute top-1/4 left-0 right-0 h-px bg-white/30" />
-                    <div className="absolute top-2/4 left-0 right-0 h-px bg-white/30" />
-                    <div className="absolute top-3/4 left-0 right-0 h-px bg-white/30" />
-                  </div>
-
-                  {/* Play button */}
-                  <div className="w-16 h-16 rounded-full bg-accent-orange flex items-center justify-center transition-transform group-hover:scale-110">
-                    <Play size={28} weight="fill" className="text-white ml-1" />
-                  </div>
-                </div>
-
-                {/* Card content */}
-                <div className="p-5">
-                  <h3 className="text-[18px] leading-[24px] tracking-[-0.4px] font-medium mb-2 line-clamp-2">
-                    {video.title}
-                  </h3>
-                  {video.description && (
-                    <p className="text-[14px] leading-[20px] text-dark/60 mb-3 line-clamp-3">
-                      {video.description}
-                    </p>
-                  )}
-                  <span className="text-[12px] font-bold uppercase tracking-widest text-accent-orange">
-                    {video.brand}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </ScrollReveal>
-      </section>
-    </>
-  );
+export default function Page() {
+  return <VideosClient />;
 }

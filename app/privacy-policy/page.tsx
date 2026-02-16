@@ -1,3 +1,10 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy | MLX Consulting",
+  description: "MLX Consulting privacy policy covering data collection, usage, and protection practices.",
+};
+
 export default function PrivacyPolicyPage() {
   return (
     <section className="pt-[170px] pb-[80px] md:pb-[100px] px-6 md:px-[50px] bg-cream">
