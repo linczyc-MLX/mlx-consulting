@@ -16,14 +16,14 @@ const navLinks = [
 ];
 
 const serviceLinks = [
-  { label: "D-VELOP360", href: "/services#d-velop360" },
-  { label: "Consulting Services", href: "/services#consulting-services" },
-  { label: "Master Planning & Design", href: "/services#master-planning" },
-  { label: "Development Management", href: "/services#development-management" },
-  { label: "Project & Construction Management", href: "/services#project-construction" },
-  { label: "Not4Sale Residential Advisory", href: "/services#not4sale" },
-  { label: "Thought Leadership", href: "/services#thought-leadership" },
-  { label: "Creative and Branding", href: "/services#creative-branding" },
+  { label: "D-VELOP360", href: "/services/d-velop360" },
+  { label: "Consulting Services", href: "/services/consulting-services" },
+  { label: "Master Planning & Design", href: "/services/master-planning-design" },
+  { label: "Development Management", href: "/services/development-management" },
+  { label: "Project & Construction Management", href: "/services/project-management" },
+  { label: "Not4Sale Residential Advisory", href: "/services/not4sale" },
+  { label: "Thought Leadership", href: "/services/thought-leadership" },
+  { label: "Creative and Branding", href: "/services/creative-branding" },
 ];
 
 export function Header() {
