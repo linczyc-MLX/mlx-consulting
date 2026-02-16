@@ -57,7 +57,7 @@ const serviceCards: ServiceCard[] = [
   },
   {
     title: "Development Management",
-    href: "/services/architectural-design",
+    href: "/services/development-management",
     subItems: [
       "Pre-Development Feasibility",
       "Site Due Diligence",

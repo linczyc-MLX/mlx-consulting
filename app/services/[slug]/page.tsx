@@ -14,6 +14,7 @@ export interface ServiceData {
   tagline: string;
   description: string;
   extendedDescription: string;
+  heroImage: string;
   subServices: SubService[];
 }
 
@@ -22,6 +23,7 @@ const services: ServiceData[] = [
     slug: "d-velop360",
     title: "D-VELOP360",
     tagline: "End-to-end development oversight from vision to delivery.",
+    heroImage: "/images/pier66-hero.jpg",
     description:
       "A comprehensive, end-to-end development oversight model that covers every phase of real estate development, from vision to delivery. D-VELOP360 ensures alignment across all disciplines, stakeholders, and timelines to maximize value and minimize risk.",
     extendedDescription:
@@ -53,6 +55,7 @@ const services: ServiceData[] = [
     slug: "consulting-services",
     title: "Consulting Services",
     tagline: "Expert guidance at every step of your project.",
+    heroImage: "/images/consultation.jpg",
     description:
       "Expert guidance at every step. Whether you need a second opinion on building codes, a fresh eye on design concepts, or a detailed cost analysis, our consulting team brings decades of experience to the table.",
     extendedDescription:
@@ -89,6 +92,7 @@ const services: ServiceData[] = [
     slug: "master-planning-design",
     title: "Master Planning & Design",
     tagline: "Creating cohesive visions that shape remarkable environments.",
+    heroImage: "/images/concept-development.png",
     description:
       "From the big picture to the fine details, our master planning and design team creates cohesive visions that balance aesthetics, functionality, and sustainability to shape remarkable environments.",
     extendedDescription:
@@ -132,9 +136,10 @@ const services: ServiceData[] = [
     ],
   },
   {
-    slug: "architectural-design",
+    slug: "development-management",
     title: "Development Management",
     tagline: "Strategic oversight from concept to completion.",
+    heroImage: "/images/property.png",
     description:
       "We guide your project from concept to completion with strategic oversight, ensuring every decision aligns with your financial goals, timeline, and quality standards.",
     extendedDescription:
@@ -181,6 +186,7 @@ const services: ServiceData[] = [
     slug: "project-management",
     title: "Project & Construction Management",
     tagline: "Hands-on management that keeps your project on track.",
+    heroImage: "/images/designing.png",
     description:
       "Hands-on management that keeps your project on track, on budget, and built to the highest standards. From scheduling to commissioning, we oversee every detail so you don\u2019t have to.",
     extendedDescription:
@@ -227,6 +233,7 @@ const services: ServiceData[] = [
     slug: "not4sale",
     title: "Not4Sale Residential Advisory",
     tagline: "Bespoke advisory for discerning homeowners and investors.",
+    heroImage: "/images/gallery-1.jpg",
     description:
       "A bespoke advisory service for discerning homeowners and investors seeking to acquire, renovate, or build luxury residences. We bring the same institutional-quality oversight to your private home as we do to large-scale developments.",
     extendedDescription:
@@ -263,6 +270,7 @@ const services: ServiceData[] = [
     slug: "thought-leadership",
     title: "Thought Leadership",
     tagline: "Sharing knowledge and shaping the future of the industry.",
+    heroImage: "/images/model-buildings.png",
     description:
       "Sharing our knowledge and insights with the broader industry through speaking engagements, publications, and educational initiatives. We contribute to shaping the future of real estate development and design.",
     extendedDescription:
@@ -299,6 +307,7 @@ const services: ServiceData[] = [
     slug: "creative-branding",
     title: "Creative and Branding",
     tagline: "Crafting distinctive identities for exceptional projects.",
+    heroImage: "/images/gallery-2.jpg",
     description:
       "Every great project deserves a compelling story. Our creative and branding team crafts distinctive identities that capture the essence of your development and resonate with your target audience.",
     extendedDescription:

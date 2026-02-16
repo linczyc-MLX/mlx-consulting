@@ -13,8 +13,31 @@ const videos = [
       "What if the single smartest hire you make on a mixed-use project isn\u2019t another PM \u2014 it\u2019s an Executive Development Officer?",
     brand: "MLX Consulting",
     color: "bg-dark",
-    // Replace with actual video embed URL when available
-    embedUrl: "",
+    embedUrl: "https://www.youtube.com/embed/RYne9amFHh4",
+  },
+  {
+    title: "Journey to New Heights",
+    description:
+      "The Trojena project is an ambitious development initiative located in the NEOM region of Saudi Arabia. It aims to create a year-round mountain resort that blends luxury living with nature and innovative technology.",
+    brand: "TROJENA",
+    color: "bg-[#2c3530]",
+    embedUrl: "https://www.youtube.com/embed/egyljEUWyxA",
+  },
+  {
+    title: "QE2 Interiors Reimagined",
+    description:
+      "Reimagining the interiors of the iconic Queen Elizabeth 2 as it relocates to its permanent home in Dubai.",
+    brand: "Wilson Associates",
+    color: "bg-[#3a3528]",
+    embedUrl: "https://www.youtube.com/embed/rTWB-zofvgc",
+  },
+  {
+    title: "Half Moon Bay",
+    description:
+      "Half Moon Bay offers guests and residents a new paradigm in ultra-luxury Caribbean hospitality. With 3,200 feet of white coral beachfront, the 47-key Rosewood Hotel and Residences will rest lightly on the land.",
+    brand: "Pico Pro",
+    color: "bg-dark-alt",
+    embedUrl: "https://www.youtube.com/embed/00c2M5b0H3M",
   },
   {
     title: "Branded Luxury Residential Development",
@@ -22,30 +45,55 @@ const videos = [
       "Strategic investment intelligence for developers and investors evaluating branded residential opportunities across GCC markets.",
     brand: "D-VELOP360",
     color: "bg-teal-dark",
-    embedUrl: "",
-  },
-  {
-    title: "Independent Advisory Services",
-    description:
-      "Not4Sale is your trusted advisor for the owners, developers and investors looking to create luxury residential residences...",
-    brand: "Not4Sale",
-    color: "bg-dark-alt",
-    embedUrl: "",
+    embedUrl: "https://www.youtube.com/embed/WikdgoFiDQ4",
   },
   {
     title: "Inspiring the next generation of creators",
-    description: "",
+    description:
+      "Hiring, managing and mentoring a team of architects, development and project management professionals from a diverse range of backgrounds and experience was an extraordinary privilege.",
     brand: "Trojena The Mountains of NEOM",
     color: "bg-[#3a3528]",
-    embedUrl: "",
+    embedUrl: "https://www.youtube.com/embed/2WckYLNIlqI",
   },
   {
     title: "From Buyer to Resident",
     description:
-      "Guiding the ultra high net worth individual, their families and advisors through the complex journey of designing a home...",
-    brand: "The Mountains of NEOM",
+      "Guiding the ultra high net worth individual, their families and advisors through the complex journey of designing a home based on their passions and lifestyles through the delivery of a white glove experience from ideation to occupancy.",
+    brand: "The Universe is Expanding",
     color: "bg-[#2c3530]",
-    embedUrl: "",
+    embedUrl: "https://www.youtube.com/embed/cvLlxwqevi0",
+  },
+  {
+    title: "Independent Advisory Services",
+    description:
+      "Not4Sale is your trusted advisor for the owners, developers and investors looking to create luxury residential residences that align both with the client\u2019s vision and lifestyle and the market for future buyers.",
+    brand: "Not4Sale",
+    color: "bg-dark",
+    embedUrl: "https://www.youtube.com/embed/IphIHp6SHr0",
+  },
+  {
+    title: "It\u2019s vibrant, collaborative, and inspiring",
+    description:
+      "Pier Sixty-Six with its eye-catching midcentury modern design, has been one of Fort Lauderdale\u2019s most beloved hospitality destinations for decades. After its extensive makeover, the hospitality mega-complex now boasts a new hotel tower, 325 rooms, 88 private residences, and 12 restaurants.",
+    brand: "Pier Sixty-Six",
+    color: "bg-dark-alt",
+    embedUrl: "https://www.youtube.com/embed/M2ocLsEwqNI",
+  },
+  {
+    title: "WET DESIGN",
+    description:
+      "WET Design is the global leader in dramatic, one of a kind water features. From Las Vegas to Dubai, their installations have captivated millions of visitors. MLX was retained by the CEO to develop and expand their business development capabilities.",
+    brand: "WET DESIGN",
+    color: "bg-teal-dark",
+    embedUrl: "https://www.youtube.com/embed/CnuLwC6fb9Q",
+  },
+  {
+    title: "Site Investigation",
+    description:
+      "With remote and dramatic site locations, Trojena offers tremendous challenges to mobilize for the Early Works Packages. The primary activity is Site Investigation \u2014 Can we build here? What are the soil conditions?",
+    brand: "Trojena",
+    color: "bg-[#3a3528]",
+    embedUrl: "https://www.youtube.com/embed/NY2ov2ErS-c",
   },
 ];
 

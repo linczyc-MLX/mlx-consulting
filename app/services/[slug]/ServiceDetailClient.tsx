@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { ArrowLeft, ArrowRight, CaretRight } from "@phosphor-icons/react";
 import type { ServiceData } from "./page";
@@ -38,6 +39,24 @@ export default function ServiceDetailClient({
           </p>
         </ScrollReveal>
       </section>
+
+      {/* ───── HERO IMAGE ───── */}
+      {service.heroImage && (
+        <section className="px-6 md:px-[50px] pb-[60px] md:pb-[80px]">
+          <ScrollReveal variant="scaleIn">
+            <div className="relative w-full aspect-[16/9] rounded-lg overflow-hidden">
+              <Image
+                src={service.heroImage}
+                alt={service.title}
+                fill
+                className="object-cover"
+                priority
+                sizes="100vw"
+              />
+            </div>
+          </ScrollReveal>
+        </section>
+      )}
 
       {/* ───── OVERVIEW ───── */}
       <section className="py-[60px] md:py-[80px] px-6 md:px-[50px]">

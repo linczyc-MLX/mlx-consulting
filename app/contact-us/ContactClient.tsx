@@ -19,11 +19,33 @@ export default function ContactUsPage() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [formErrors, setFormErrors] = useState<string[]>([]);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    // TODO: integrate with form submission API (e.g. Formspree, Netlify Forms, or custom endpoint)
-    setSubmitted(true);
+    setSubmitting(true);
+    setFormErrors([]);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formState),
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        setSubmitted(true);
+      } else {
+        setFormErrors(data.errors || ["Something went wrong. Please try again."]);
+      }
+    } catch {
+      setFormErrors(["Unable to send message. Please check your connection and try again."]);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -155,6 +177,7 @@ export default function ContactUsPage() {
                   <button
                     onClick={() => {
                       setSubmitted(false);
+                      setFormErrors([]);
                       setFormState({ name: "", phone: "", email: "", message: "" });
                     }}
                     className="mt-6 text-accent-orange font-medium text-[14px] hover:underline"
@@ -164,6 +187,13 @@ export default function ContactUsPage() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="flex-1 flex flex-col gap-4">
+                  {formErrors.length > 0 && (
+                    <div className="bg-red-50 border border-red-200 text-red-700 text-[14px] rounded-lg p-3">
+                      {formErrors.map((err, i) => (
+                        <p key={i}>{err}</p>
+                      ))}
+                    </div>
+                  )}
                   <div>
                     <label className="block text-[12px] font-bold uppercase tracking-wider text-dark/80 mb-1.5">
                       NAME
@@ -225,10 +255,11 @@ export default function ContactUsPage() {
                   </div>
                   <button
                     type="submit"
-                    className="w-full flex items-center justify-center gap-2 bg-accent-orange text-white font-medium text-[15px] py-3 rounded-lg hover:bg-accent-orange/90 transition-colors"
+                    disabled={submitting}
+                    className="w-full flex items-center justify-center gap-2 bg-accent-orange text-white font-medium text-[15px] py-3 rounded-lg hover:bg-accent-orange/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     <PaperPlaneTilt size={18} weight="fill" />
-                    Send Message
+                    {submitting ? "Sending..." : "Send Message"}
                   </button>
                 </form>
               )}

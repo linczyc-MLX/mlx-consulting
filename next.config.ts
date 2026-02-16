@@ -9,6 +9,30 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/d360",
+        destination: "/services/d-velop360",
+        permanent: true,
+      },
+      {
+        source: "/n4s",
+        destination: "/services/not4sale",
+        permanent: true,
+      },
+      {
+        source: "/think",
+        destination: "/services/thought-leadership",
+        permanent: true,
+      },
+      {
+        source: "/services/architectural-design",
+        destination: "/services/development-management",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

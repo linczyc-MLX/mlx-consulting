@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { motion, AnimatePresence } from "framer-motion";
-import { CaretDown, CaretUp, PaperPlaneTilt, Plus, Minus } from "@phosphor-icons/react";
+import { CaretDown, CaretUp, PaperPlaneTilt, Plus, Minus, CheckCircle } from "@phosphor-icons/react";
 
 /* ─── Stats Data ─── */
 const stats = [
@@ -203,6 +203,40 @@ function FAQAccordion({ items }: { items: { q: string; a: string }[] }) {
    ═══════════════════════════════════════════ */
 export default function HomePage() {
   const [activeStep, setActiveStep] = useState(0);
+  const [formState, setFormState] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [formErrors, setFormErrors] = useState<string[]>([]);
+
+  const handleFormSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setFormStatus("submitting");
+    setFormErrors([]);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formState),
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        setFormStatus("success");
+      } else {
+        setFormStatus("error");
+        setFormErrors(data.errors || ["Something went wrong. Please try again."]);
+      }
+    } catch {
+      setFormStatus("error");
+      setFormErrors(["Unable to send message. Please check your connection and try again."]);
+    }
+  };
 
   return (
     <>
@@ -466,46 +500,92 @@ export default function HomePage() {
                 We&apos;re just a form away&mdash;send us your question, and
                 we&apos;ll be happy to help!
               </p>
-              <form className="space-y-4">
-                <div>
-                  <label className="block text-[12px] font-bold uppercase tracking-wider text-dark/80 mb-1.5">NAME</label>
-                  <input
-                    type="text"
-                    placeholder="Jane Smith"
-                    className="w-full px-4 py-3 rounded-lg border border-dark/10 bg-white text-[15px] focus:outline-none focus:border-accent-orange transition-colors"
+
+              {formStatus === "success" ? (
+                <div className="flex flex-col items-center justify-center text-center py-10">
+                  <CheckCircle
+                    size={48}
+                    weight="fill"
+                    className="text-accent-orange mb-4"
                   />
+                  <h4 className="text-[18px] font-medium mb-2">
+                    Message Sent!
+                  </h4>
+                  <p className="text-[15px] text-dark/60">
+                    Thank you for reaching out. We&apos;ll get back to you
+                    shortly.
+                  </p>
+                  <button
+                    onClick={() => {
+                      setFormStatus("idle");
+                      setFormState({ name: "", phone: "", email: "", message: "" });
+                    }}
+                    className="mt-6 text-accent-orange font-medium text-[14px] hover:underline"
+                  >
+                    Send another message
+                  </button>
                 </div>
-                <div>
-                  <label className="block text-[12px] font-bold uppercase tracking-wider text-dark/80 mb-1.5">PHONE</label>
-                  <input
-                    type="tel"
-                    placeholder="(123) 456-7890"
-                    className="w-full px-4 py-3 rounded-lg border border-dark/10 bg-white text-[15px] focus:outline-none focus:border-accent-orange transition-colors"
-                  />
-                </div>
-                <div>
-                  <label className="block text-[12px] font-bold uppercase tracking-wider text-dark/80 mb-1.5">EMAIL</label>
-                  <input
-                    type="email"
-                    placeholder="jane@gmail.com"
-                    className="w-full px-4 py-3 rounded-lg border border-dark/10 bg-white text-[15px] focus:outline-none focus:border-accent-orange transition-colors"
-                  />
-                </div>
-                <div>
-                  <label className="block text-[12px] font-bold uppercase tracking-wider text-dark/80 mb-1.5">MESSAGE</label>
-                  <textarea
-                    placeholder="Write your message here"
-                    rows={4}
-                    className="w-full px-4 py-3 rounded-lg border border-dark/10 bg-white text-[15px] focus:outline-none focus:border-accent-orange transition-colors resize-none"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="w-full bg-accent-orange text-white font-medium text-[15px] py-3 rounded-lg hover:bg-accent-orange/90 transition-colors"
-                >
-                  Send Message
-                </button>
-              </form>
+              ) : (
+                <form onSubmit={handleFormSubmit} className="space-y-4">
+                  {formStatus === "error" && formErrors.length > 0 && (
+                    <div className="bg-red-50 border border-red-200 text-red-700 text-[14px] rounded-lg p-3">
+                      {formErrors.map((err, i) => (
+                        <p key={i}>{err}</p>
+                      ))}
+                    </div>
+                  )}
+                  <div>
+                    <label className="block text-[12px] font-bold uppercase tracking-wider text-dark/80 mb-1.5">NAME</label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="Jane Smith"
+                      value={formState.name}
+                      onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                      className="w-full px-4 py-3 rounded-lg border border-dark/10 bg-white text-[15px] focus:outline-none focus:border-accent-orange transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[12px] font-bold uppercase tracking-wider text-dark/80 mb-1.5">PHONE</label>
+                    <input
+                      type="tel"
+                      placeholder="(123) 456-7890"
+                      value={formState.phone}
+                      onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
+                      className="w-full px-4 py-3 rounded-lg border border-dark/10 bg-white text-[15px] focus:outline-none focus:border-accent-orange transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[12px] font-bold uppercase tracking-wider text-dark/80 mb-1.5">EMAIL</label>
+                    <input
+                      type="email"
+                      required
+                      placeholder="jane@gmail.com"
+                      value={formState.email}
+                      onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                      className="w-full px-4 py-3 rounded-lg border border-dark/10 bg-white text-[15px] focus:outline-none focus:border-accent-orange transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[12px] font-bold uppercase tracking-wider text-dark/80 mb-1.5">MESSAGE</label>
+                    <textarea
+                      required
+                      placeholder="Write your message here"
+                      rows={4}
+                      value={formState.message}
+                      onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                      className="w-full px-4 py-3 rounded-lg border border-dark/10 bg-white text-[15px] focus:outline-none focus:border-accent-orange transition-colors resize-none"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    disabled={formStatus === "submitting"}
+                    className="w-full bg-accent-orange text-white font-medium text-[15px] py-3 rounded-lg hover:bg-accent-orange/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
+                    {formStatus === "submitting" ? "Sending..." : "Send Message"}
+                  </button>
+                </form>
+              )}
             </div>
           </div>
         </ScrollReveal>

@@ -29,6 +29,7 @@ const serviceLinks = [
 export function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
 
   return (
     <nav className="sticky top-0 z-50 flex items-center justify-between h-16 px-6 md:px-[50px] bg-cream/90 backdrop-blur-sm border-b border-dark/5">
@@ -136,16 +137,58 @@ export function Header() {
             transition={{ type: "spring", bounce: 0, duration: 0.4 }}
             className="fixed inset-0 top-16 bg-cream z-40 px-6 py-8 flex flex-col gap-4"
           >
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                onClick={() => setIsMobileOpen(false)}
-                className="text-2xl font-medium text-dark py-2 border-b border-cream-dark"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) =>
+              link.hasDropdown ? (
+                <div key={link.label}>
+                  <button
+                    onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                    className="w-full flex items-center justify-between text-2xl font-medium text-dark py-2 border-b border-cream-dark"
+                  >
+                    {link.label}
+                    <CaretDown
+                      size={20}
+                      className={`transition-transform duration-300 ${isMobileServicesOpen ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                  <AnimatePresence>
+                    {isMobileServicesOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="pl-4 py-2 flex flex-col gap-1">
+                          {serviceLinks.map((service) => (
+                            <Link
+                              key={service.href}
+                              href={service.href}
+                              onClick={() => {
+                                setIsMobileOpen(false);
+                                setIsMobileServicesOpen(false);
+                              }}
+                              className="text-lg text-dark/70 hover:text-accent-orange transition-colors py-1.5 border-b border-cream-dark/50 last:border-b-0"
+                            >
+                              {service.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ) : (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setIsMobileOpen(false)}
+                  className="text-2xl font-medium text-dark py-2 border-b border-cream-dark"
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
           </motion.div>
         )}
       </AnimatePresence>
