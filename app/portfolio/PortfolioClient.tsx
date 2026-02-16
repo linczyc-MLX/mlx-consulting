@@ -5,52 +5,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
 import { motion, AnimatePresence } from "framer-motion";
-
-/* ─── Portfolio Categories & Images ─── */
-const categories = [
-  { label: "Hotels", key: "hotels", image: "/images/portfolio-hotels.png" },
-  {
-    label: "Restaurants and Bars",
-    key: "restaurants",
-    image: "/images/portfolio-restaurants.png",
-  },
-  {
-    label: "Residential",
-    key: "residential",
-    image: "/images/portfolio-residential.png",
-  },
-  {
-    label: "Mixed-Use",
-    key: "mixed",
-    image: "/images/portfolio-mixed.png",
-  },
-  {
-    label: "Destination Strategies",
-    key: "destination",
-    image: "/images/portfolio-destination.png",
-  },
-  {
-    label: "Project & Construction Management",
-    key: "pcm",
-    image: "/images/portfolio-pcm.png",
-  },
-  {
-    label: "Architecture & Design Management",
-    key: "adm",
-    image: "/images/portfolio-adm.png",
-  },
-  {
-    label: "Trojena",
-    key: "trojena",
-    image: "/images/portfolio-trojena.png",
-  },
-];
+import { Play } from "@phosphor-icons/react";
+import { categories, portfolioVideos } from "./portfolio-data";
 
 /* ═══════════════════════════════════════════
    PORTFOLIO PAGE
    ═══════════════════════════════════════════ */
 export default function PortfolioPage() {
   const [activeTab, setActiveTab] = useState(0);
+  const active = categories[activeTab];
 
   return (
     <>
@@ -91,7 +54,7 @@ export default function PortfolioPage() {
           <div className="flex flex-wrap gap-3 mb-10">
             {categories.map((cat, i) => (
               <button
-                key={cat.key}
+                key={cat.slug}
                 onClick={() => setActiveTab(i)}
                 className={`px-4 py-2 rounded-full text-[14px] font-medium transition-all duration-200 ${
                   activeTab === i
@@ -104,7 +67,7 @@ export default function PortfolioPage() {
             ))}
           </div>
 
-          {/* Portfolio Image Display */}
+          {/* 2×2 Image Grid */}
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
@@ -113,17 +76,33 @@ export default function PortfolioPage() {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="relative w-full aspect-[16/9] md:aspect-[2/1] rounded-xl overflow-hidden">
-                <Image
-                  src={categories[activeTab].image}
-                  alt={`${categories[activeTab].label} portfolio`}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <p className="mt-4 text-[15px] text-dark/50 font-medium">
-                {categories[activeTab].label}
-              </p>
+              <Link href={`/portfolio/${active.slug}`}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {active.previewImages.map((src, i) => (
+                    <div
+                      key={i}
+                      className="relative aspect-[4/3] rounded-xl overflow-hidden group"
+                    >
+                      <Image
+                        src={src}
+                        alt={`${active.label} portfolio ${i + 1}`}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                      <div className="absolute inset-0 bg-dark/0 group-hover:bg-dark/10 transition-colors duration-300" />
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-4 flex items-center justify-between">
+                  <p className="text-[15px] text-dark/50 font-medium">
+                    {active.label}
+                  </p>
+                  <span className="text-accent-orange text-[14px] font-medium">
+                    View Album &rarr;
+                  </span>
+                </div>
+              </Link>
             </motion.div>
           </AnimatePresence>
         </ScrollReveal>
@@ -145,6 +124,23 @@ export default function PortfolioPage() {
           >
             Watch All Videos &rarr;
           </Link>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {portfolioVideos.map((video, i) => (
+              <div
+                key={i}
+                className="relative aspect-video rounded-xl overflow-hidden bg-dark group"
+              >
+                <iframe
+                  src={video.embedUrl}
+                  title={video.title}
+                  className="absolute inset-0 w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            ))}
+          </div>
         </ScrollReveal>
       </section>
     </>
