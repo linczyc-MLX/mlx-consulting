@@ -3,8 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
-import { ArrowLeft, BookOpen, Play } from "@phosphor-icons/react";
-import { categories, PortfolioCategory } from "../portfolio-data";
+import { ArrowLeft, BookOpen, Play, FolderOpen } from "@phosphor-icons/react";
+import { categories } from "../portfolio-data";
 
 /* ═══════════════════════════════════════════
    ALBUM PAGE
@@ -15,8 +15,8 @@ export default function AlbumClient({ slug }: { slug: string }) {
 
   return (
     <>
-      {/* ───── HEADER ───── */}
-      <section className="pt-[170px] pb-[60px] px-6 md:px-[50px] bg-cream">
+      {/* ───── HEADER: Title left, Description right ───── */}
+      <section className="pt-[140px] pb-[40px] px-6 md:px-[50px] bg-cream">
         <ScrollReveal variant="slideUp">
           <Link
             href="/portfolio"
@@ -26,76 +26,71 @@ export default function AlbumClient({ slug }: { slug: string }) {
             Back to Portfolio
           </Link>
 
-          <span className="inline-flex items-center gap-2 px-3 py-1.5 border border-dark/10 rounded-full text-xs font-bold uppercase tracking-widest text-dark/60 mb-6">
-            Album
-          </span>
-          <h1 className="max-w-3xl mb-6">{category.label}</h1>
-          <p className="max-w-2xl text-[18px] leading-[28px] text-dark/70">
-            {category.description}
-          </p>
-        </ScrollReveal>
-      </section>
-
-      {/* ───── IMAGE GALLERY ───── */}
-      <section className="py-[40px] px-6 md:px-[50px] bg-cream">
-        <ScrollReveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {category.previewImages.map((src, i) => (
-              <div
-                key={i}
-                className="relative aspect-[4/3] rounded-xl overflow-hidden"
-              >
-                <Image
-                  src={src}
-                  alt={`${category.label} ${i + 1}`}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-start">
+            <div>
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 border border-dark/10 rounded-full text-xs font-bold uppercase tracking-widest text-dark/60 mb-4">
+                <FolderOpen size={14} weight="bold" />
+                Album
+              </span>
+              <h1>{category.label}</h1>
+            </div>
+            <div className="md:pt-10">
+              <p className="text-[16px] leading-[26px] text-dark/70">
+                {category.description}
+              </p>
+            </div>
           </div>
         </ScrollReveal>
       </section>
 
-      {/* ───── PROJECTS / FLIPBOOKS ───── */}
+      {/* ───── PROJECT CARDS (with flipbook links) ───── */}
       {category.projects.length > 0 && (
-        <section className="py-[60px] md:py-[80px] px-6 md:px-[50px] bg-cream">
+        <section className="py-[20px] md:py-[40px] px-6 md:px-[50px] bg-cream">
           <ScrollReveal>
-            <h2 className="text-[24px] md:text-[28px] font-medium tracking-[-0.5px] mb-8">
-              Projects
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="space-y-5">
               {category.projects.map((project, i) => (
                 <a
                   key={i}
                   href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-4 p-5 rounded-xl bg-white border border-dark/5 hover:border-accent-orange/30 hover:shadow-md transition-all duration-200"
+                  className="group block relative rounded-2xl overflow-hidden bg-dark"
                 >
-                  <div className="flex-shrink-0 w-11 h-11 rounded-lg bg-dark/5 group-hover:bg-accent-orange/10 flex items-center justify-center transition-colors">
-                    {project.type === "video" ? (
-                      <Play
-                        size={20}
-                        weight="fill"
-                        className="text-dark/40 group-hover:text-accent-orange transition-colors"
-                      />
-                    ) : (
-                      <BookOpen
-                        size={20}
-                        weight="duotone"
-                        className="text-dark/40 group-hover:text-accent-orange transition-colors"
-                      />
-                    )}
-                  </div>
-                  <div className="min-w-0">
-                    <h3 className="text-[15px] font-medium text-dark truncate group-hover:text-accent-orange transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-[12px] text-dark/40 uppercase tracking-wider font-medium">
-                      {project.type === "video" ? "Watch Video" : "View Flipbook"}
-                    </p>
+                  {/* Image collage background using category images */}
+                  <div className="relative aspect-[16/7] overflow-hidden">
+                    <Image
+                      src={category.previewImages[i % category.previewImages.length]}
+                      alt={project.title}
+                      fill
+                      className="object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500"
+                      sizes="(max-width: 768px) 100vw, 80vw"
+                    />
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/30 to-transparent" />
+
+                    {/* Project title at bottom */}
+                    <div className="absolute bottom-0 left-0 right-0 p-6 flex items-end justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded bg-white/10 flex items-center justify-center">
+                          {project.type === "video" ? (
+                            <Play size={16} weight="fill" className="text-white" />
+                          ) : (
+                            <BookOpen size={16} weight="duotone" className="text-white" />
+                          )}
+                        </div>
+                        <div>
+                          <h3 className="text-white text-[18px] md:text-[22px] font-medium">
+                            {project.title}
+                          </h3>
+                          <p className="text-white/50 text-[12px] uppercase tracking-wider font-medium">
+                            {project.type === "video" ? "Watch Video" : "View Flipbook"}
+                          </p>
+                        </div>
+                      </div>
+                      <span className="hidden md:inline-flex items-center gap-2 text-accent-orange text-[14px] font-medium opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+                        Open &rarr;
+                      </span>
+                    </div>
                   </div>
                 </a>
               ))}
@@ -104,8 +99,32 @@ export default function AlbumClient({ slug }: { slug: string }) {
         </section>
       )}
 
+      {/* ───── IMAGE GALLERY (for categories without projects) ───── */}
+      {category.projects.length === 0 && (
+        <section className="py-[20px] md:py-[40px] px-6 md:px-[50px] bg-cream">
+          <ScrollReveal>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {category.previewImages.map((src, i) => (
+                <div
+                  key={i}
+                  className="relative aspect-[4/3] rounded-xl overflow-hidden"
+                >
+                  <Image
+                    src={src}
+                    alt={`${category.label} ${i + 1}`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
+        </section>
+      )}
+
       {/* ───── OTHER ALBUMS ───── */}
-      <section className="py-[60px] md:py-[80px] px-6 md:px-[50px] bg-cream border-t border-dark/5">
+      <section className="py-[60px] md:py-[80px] px-6 md:px-[50px] bg-cream border-t border-dark/5 mt-10">
         <ScrollReveal>
           <h2 className="text-[24px] md:text-[28px] font-medium tracking-[-0.5px] mb-8">
             Other Albums
