@@ -31,6 +31,11 @@ const nextConfig: NextConfig = {
         destination: "/services/development-management",
         permanent: true,
       },
+      {
+        source: "/portfolio/restaurants-and-bars",
+        destination: "/portfolio/restaurants-bars",
+        permanent: true,
+      },
     ];
   },
 };
