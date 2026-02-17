@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowLeft,
   ArrowRight,
-  CaretRight,
+  Check,
   CaretDown,
   PlayCircle,
   FilePdf,
@@ -218,8 +218,8 @@ export default function ServiceDetailClient({
                 <div className="bg-cream-dark rounded-xl p-6 h-full">
                   <div className="flex items-start gap-3 mb-3">
                     <span className="flex-shrink-0 w-8 h-8 rounded-lg bg-accent-orange/10 flex items-center justify-center">
-                      <CaretRight
-                        size={14}
+                      <Check
+                        size={16}
                         weight="bold"
                         className="text-accent-orange"
                       />
