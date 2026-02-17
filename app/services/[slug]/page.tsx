@@ -393,46 +393,117 @@ const services: ServiceData[] = [
     slug: "development-management",
     title: "Development Management",
     tagline: "Strategic oversight from concept to completion.",
-    heroImage: "/images/property.png",
+    heroImage:
+      "https://framerusercontent.com/images/TXnbmkR3VStDNbmD3QUcMBsP0EM.jpg",
     description:
-      "We guide your project from concept to completion with strategic oversight, ensuring every decision aligns with your financial goals, timeline, and quality standards.",
+      "By engaging our development management services, clients gain access to expert guidance throughout the project lifecycle. Our thorough feasibility assessments and proactive risk management strategies minimize financial uncertainties and ensure that projects align with your creative, financial and sustainability goals.",
     extendedDescription:
-      "Development management is the backbone of any successful real estate project. Our team provides the strategic leadership and day-to-day oversight needed to navigate the complexities of development \u2014 from pre-development feasibility and site selection through financial structuring, design management, construction oversight, and post-completion analysis.",
+      "We offer the following Development Management services:",
     subServices: [
       {
-        title: "Pre-Development Feasibility",
+        title: "Feasibility Studies",
         description:
-          "Comprehensive analysis of market conditions, site potential, regulatory environment, and financial projections to validate your development concept.",
+          "These studies analyze various factors such as market conditions, financial viability, and regulatory requirements. By assessing these elements early on, clients can make informed decisions about whether to proceed with a project.",
       },
       {
-        title: "Site Due Diligence",
+        title: "Site Selection and Acquisition",
         description:
-          "Thorough investigation of site conditions including environmental assessments, geotechnical studies, utility infrastructure, and access.",
+          "The right location can significantly affect a project\u2019s success. Our expertise helps clients identify sites that offer the best potential for growth and profitability, factoring in accessibility, demographics, and competition.",
       },
       {
-        title: "Financial Structuring Strategies",
+        title: "Financial Modeling and Budgeting",
         description:
-          "Advisory on capital structure, financing options, joint venture arrangements, and financial modeling to optimize returns.",
+          "Creating detailed financial models enables developers to forecast cash flows, project returns, and identify funding requirements. Effective budgeting ensures that projects remain financially viable throughout their lifecycle.",
       },
       {
-        title: "Community Impact Studies",
+        title: "Project Scheduling and Timeline Development",
         description:
-          "Assessment of how your development will interact with the surrounding community, including traffic, environmental, and social impact analyses.",
+          "A well-structured timeline is essential for keeping projects on track. We develop detailed schedules that outline key milestones and deadlines, helping to coordinate various stakeholders efficiently.",
       },
       {
-        title: "Development Timeline Optimization",
+        title: "Risk Management and Mitigation Strategies",
         description:
-          "Strategic scheduling that identifies critical path activities and acceleration opportunities to compress timelines without sacrificing quality.",
+          "Identifying potential risks\u2014be they financial, environmental, or operational\u2014is crucial. We help clients devise strategies to mitigate these risks, ensuring that unexpected challenges do not derail project progress.",
       },
       {
-        title: "Value Engineering",
+        title: "Stakeholder Engagement and Communication",
         description:
-          "Systematic analysis of design and construction elements to reduce costs while maintaining quality, performance, and aesthetics.",
+          "Establishing open lines of communication with stakeholders\u2014including investors, community members, and regulatory bodies\u2014builds trust and fosters collaboration, which is vital for project success.",
       },
       {
-        title: "Post-Completion Analysis",
+        title: "Contract Negotiation and Management",
         description:
-          "Comprehensive review of project outcomes versus initial projections, documenting lessons learned for future developments.",
+          "Skilled negotiation ensures favorable terms and conditions in contracts with suppliers, contractors, and service providers, protecting the client\u2019s interests and enhancing project outcomes.",
+      },
+      {
+        title: "Regulatory Compliance and Permitting",
+        description:
+          "Navigating the regulatory landscape can be daunting. Our expertise ensures that all necessary permits are obtained and that projects comply with local zoning laws and environmental regulations.",
+      },
+      {
+        title: "Quality Assurance and Control",
+        description:
+          "Maintaining high-quality standards throughout the development process leads to better end results and enhances the project\u2019s reputation. We implement rigorous quality control measures to achieve this.",
+      },
+      {
+        title: "Performance Monitoring and Reporting",
+        description:
+          "Continuous monitoring of project performance against established benchmarks allows for timely adjustments and ensures that projects stay within scope and budget.",
+      },
+    ],
+    approachText:
+      "Our approach to development management is characterized by a proactive and collaborative methodology that emphasizes thorough planning and strategic execution. We begin with in-depth feasibility studies and market analyses to identify opportunities and potential challenges.\n\nBy engaging stakeholders early and maintaining transparent communication, we create a shared vision that aligns with project goals. We meticulously oversee each phase, ensuring adherence to timelines and budgets while implementing risk mitigation strategies. This hands-on approach allows us to adapt to changing circumstances quickly, ensuring that the project progresses smoothly and efficiently.",
+    benefitsTitle: "What makes our Development Management service different?",
+    benefitPoints: [
+      {
+        title: "Streamlined Project Execution",
+        description:
+          "Owners, developers, and investors benefit from a structured approach that ensures projects are completed efficiently, minimizing delays and disruptions.",
+      },
+      {
+        title: "Informed Decision-Making",
+        description:
+          "Comprehensive feasibility studies and market analyses provide valuable insights, enabling stakeholders to make informed decisions about project viability and potential returns.",
+      },
+      {
+        title: "Risk Mitigation",
+        description:
+          "Proactive risk management strategies help identify and address potential challenges before they escalate, protecting investments and ensuring project stability.",
+      },
+      {
+        title: "Enhanced Communication",
+        description:
+          "Effective stakeholder engagement fosters transparency and collaboration, keeping all parties informed and aligned throughout the project lifecycle.",
+      },
+    ],
+    faqs: [
+      {
+        question:
+          "What is development management, and why is it important?",
+        answer:
+          "Development management involves overseeing and coordinating all aspects of a real estate project from inception to completion. It is crucial as it ensures that projects are executed efficiently, on budget, and in alignment with strategic goals.",
+      },
+      {
+        question: "How do you conduct feasibility studies?",
+        answer:
+          "We conduct feasibility studies by analyzing market conditions, financial projections, site characteristics, and regulatory requirements. This comprehensive analysis helps determine the viability of the project and guides decision-making.",
+      },
+      {
+        question:
+          "What role does stakeholder engagement play in development management?",
+        answer:
+          "Stakeholder engagement is essential for building trust and ensuring that all parties have a voice in the project. It fosters collaboration and helps align the project with community needs and expectations.",
+      },
+      {
+        question:
+          "How do you manage risks associated with development projects?",
+        answer:
+          "We identify potential risks early in the process and develop mitigation strategies. This proactive approach enables us to address challenges before they escalate, safeguarding the project\u2019s success.",
+      },
+      {
+        question: "What tools do you use for project management?",
+        answer:
+          "We utilize advanced project management software to track progress, manage schedules, and oversee budgets. These tools enhance communication and facilitate efficient project execution.",
       },
     ],
   },
