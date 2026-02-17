@@ -17,6 +17,11 @@ export interface MediaItem {
   comingSoon?: boolean;
 }
 
+export interface FAQ {
+  question: string;
+  answer: string;
+}
+
 export interface ServiceData {
   slug: string;
   title: string;
@@ -29,6 +34,13 @@ export interface ServiceData {
   mediaItems?: MediaItem[];
   footerText?: string;
   footerImage?: string;
+  approachTitle?: string;
+  approachText?: string;
+  approachPoints?: { title: string; description: string }[];
+  benefitsTitle?: string;
+  benefitsText?: string;
+  benefitPoints?: { title: string; description: string }[];
+  faqs?: FAQ[];
 }
 
 /* ─── Service Data ─── */
@@ -195,6 +207,60 @@ const services: ServiceData[] = [
           "Adopting innovative technologies can streamline operations and enhance project outcomes, keeping clients competitive.",
       },
     ],
+    approachTitle: "Why Choose Our Consulting Services?",
+    approachPoints: [
+      {
+        title: "Strategic Insights",
+        description:
+          "Market research and analysis provide owners and investors with a deep understanding of market dynamics, enabling better strategic planning and investment decisions.",
+      },
+      {
+        title: "Increased ROI",
+        description:
+          "Tailored investment strategies and asset optimization consulting help maximize returns, ensuring that projects contribute positively to the bottom line.",
+      },
+      {
+        title: "Operational Efficiency",
+        description:
+          "Consulting on operational processes identifies areas for improvement, leading to cost savings and enhanced performance over time.",
+      },
+      {
+        title: "Crisis Preparedness",
+        description:
+          "Comprehensive crisis management planning equips stakeholders with strategies to navigate challenges effectively, safeguarding investments and ensuring business continuity.",
+      },
+    ],
+    benefitsText:
+      "In our Consulting Services, we adopt a holistic approach that combines expertise with a deep understanding of market dynamics. We begin by conducting thorough market research and analysis to provide clients with valuable insights that inform strategic decisions.\n\nOur consultants work closely with clients to develop customized investment strategies that align with their goals and risk tolerance. We emphasize operational efficiency by identifying best practices and areas for improvement, which can lead to significant cost savings. Our crisis management planning ensures readiness.\n\nBy fostering a culture of continuous improvement and innovation, we empower our clients to achieve sustainable success in their ventures.",
+    faqs: [
+      {
+        question: "What types of consulting services do you offer?",
+        answer:
+          "We offer a range of consulting services, including market research, investment strategy development, operational efficiency consulting, and crisis management planning, tailored to meet the unique needs of our clients.",
+      },
+      {
+        question: "How does market research benefit real estate projects?",
+        answer:
+          "Market research provides valuable insights into market trends, demographics, and competitive landscapes. This information helps clients make informed decisions regarding project feasibility and investment opportunities.",
+      },
+      {
+        question: "What is involved in developing an investment strategy?",
+        answer:
+          "Developing an investment strategy involves assessing client goals, risk tolerance, and market conditions. We create tailored strategies that maximize returns while aligning with the client\u2019s overall vision.",
+      },
+      {
+        question:
+          "How can operational efficiency consulting improve a project?",
+        answer:
+          "Operational efficiency consulting identifies inefficiencies within processes, leading to streamlined operations, cost savings, and improved performance. This can significantly enhance the overall success of a project.",
+      },
+      {
+        question:
+          "What should clients expect from crisis management planning?",
+        answer:
+          "Clients can expect a comprehensive approach to crisis management that includes risk assessment, contingency planning, and strategies for effective communication during a crisis. This preparation ensures that clients can navigate challenges proactively and minimize disruption.",
+      },
+    ],
   },
 
   /* ══════════════════════════════════════════
@@ -260,6 +326,62 @@ const services: ServiceData[] = [
         title: "Community Engagement",
         description:
           "Actively involving the community in the planning process fosters goodwill and aligns development with community needs.",
+      },
+    ],
+    approachText:
+      "During Master Planning and Design, our approach is centered around creating spaces that are not only functional but also inspiring. We conduct comprehensive site analyses to understand the unique characteristics of each location, which informs our design process.\n\nCollaborative workshops with stakeholders, including community members, ensure that diverse perspectives are integrated into the planning. Talented architects and designers craft innovative concepts that prioritize sustainability and aesthetic appeal. By balancing creativity with practicality, we create master plans that stand the test of time.\n\nContinuous feedback loops during the design process allow us to refine our plans and ensure they resonate with the intended audience.",
+    benefitsTitle: "What makes our Master Planning and Design services different?",
+    benefitPoints: [
+      {
+        title: "Optimized Land Use",
+        description:
+          "Thoughtful master planning maximizes the utility and appeal of the project, ensuring that space is used effectively to meet market demands.",
+      },
+      {
+        title: "Aesthetic and Functional Design",
+        description:
+          "High-quality architectural and landscape design enhances the visual appeal and functionality of spaces, attracting potential buyers and guests.",
+      },
+      {
+        title: "Sustainability Integration",
+        description:
+          "Incorporating sustainable practices into design not only benefits the environment but can also lead to reduced operating costs and increased marketability.",
+      },
+      {
+        title: "Community Alignment",
+        description:
+          "Engaging with local communities during the planning process ensures that developments align with community needs and preferences, enhancing acceptance and support.",
+      },
+    ],
+    faqs: [
+      {
+        question:
+          "What is master planning, and how does it differ from regular planning?",
+        answer:
+          "Master planning is a comprehensive approach that encompasses the long-term vision for a development area, integrating elements like land use, infrastructure, and community needs. It differs from regular planning by focusing on holistic development and sustainability.",
+      },
+      {
+        question: "Can you explain your design process?",
+        answer:
+          "Our design process begins with thorough site analysis, followed by collaborative workshops with stakeholders to gather input. We then develop conceptual designs that prioritize functionality, aesthetics, and sustainability.",
+      },
+      {
+        question:
+          "How do you incorporate sustainability into your designs?",
+        answer:
+          "We integrate sustainable practices by utilizing eco-friendly materials, implementing energy-efficient systems, and designing for minimal environmental impact. This approach not only benefits the planet but can also reduce operational costs.",
+      },
+      {
+        question:
+          "What is the importance of community engagement in master planning?",
+        answer:
+          "Community engagement is vital as it ensures that the development aligns with local needs and desires. Involving residents in the planning process fosters goodwill and increases the likelihood of project acceptance.",
+      },
+      {
+        question:
+          "How do you ensure your designs are practical and feasible?",
+        answer:
+          "We collaborate closely with engineering and construction teams throughout the design process to ensure that our concepts are practical and can be executed within budget and timeline constraints.",
       },
     ],
   },
@@ -378,6 +500,58 @@ const services: ServiceData[] = [
         title: "Post-Construction Services",
         description:
           "Ongoing support after project completion to address any issues and ensure long-term client satisfaction.",
+      },
+    ],
+    approachText:
+      "Our Project and Construction Management approach is built on a foundation of meticulous planning and rigorous oversight. We employ advanced project management tools to develop detailed schedules and resource allocation plans that ensure optimal efficiency on-site.\n\nThe client retained team conducts regular quality control inspections and safety audits to maintain high standards throughout the construction process. We foster strong relationships with contractors and subcontractors, facilitating seamless communication and collaboration.\n\nBy managing the complexities of construction with a focus on delivering exceptional results, we ensure that projects are completed on time, within budget, and to the highest quality standards. Our commitment to transparency means that stakeholders are kept informed at every stage, fostering trust and confidence.",
+    benefitPoints: [
+      {
+        title: "Cost Control",
+        description:
+          "Rigorous budget management and oversight help prevent cost overruns, ensuring that projects remain financially viable and within budget constraints.",
+      },
+      {
+        title: "Quality Assurance",
+        description:
+          "Consistent quality control measures lead to superior construction outcomes, increasing the value of the development and enhancing client satisfaction.",
+      },
+      {
+        title: "Timely Completion",
+        description:
+          "Effective scheduling and resource allocation ensure that projects are completed on time, allowing owners and investors to realize returns more quickly.",
+      },
+      {
+        title: "Safety Compliance",
+        description:
+          "Prioritizing safety during construction not only protects workers but also minimizes liabilities and promotes a positive project reputation.",
+      },
+    ],
+    faqs: [
+      {
+        question: "What does project management in construction entail?",
+        answer:
+          "Project management in construction involves planning, coordinating, and overseeing all activities related to building a project. This includes managing timelines, budgets, quality control, and communication among stakeholders.",
+      },
+      {
+        question: "How do you select contractors for a project?",
+        answer:
+          "We select contractors based on their experience, past performance, and alignment with project goals. We conduct thorough evaluations and interviews to ensure they meet our quality standards.",
+      },
+      {
+        question:
+          "What measures do you take to ensure quality during construction?",
+        answer:
+          "We implement rigorous quality control inspections at various stages of construction, ensuring compliance with design specifications and industry standards. This proactive approach helps maintain high-quality outcomes.",
+      },
+      {
+        question: "How do you manage safety on construction sites?",
+        answer:
+          "Safety management is prioritized through regular safety audits, training sessions, and adherence to regulatory requirements. We foster a safety-first culture to protect workers and minimize liabilities.",
+      },
+      {
+        question: "What is a punch list, and why is it important?",
+        answer:
+          "A punch list is a document that outlines any remaining tasks or issues that need to be addressed before project completion. It is important as it ensures that all final details are resolved, leading to a polished final product.",
       },
     ],
   },
@@ -675,6 +849,40 @@ const services: ServiceData[] = [
         title: "Event Branding and Promotion",
         description:
           "Designing branding strategies for events including signage, promotional materials, and overall aesthetics.",
+      },
+    ],
+    benefitsText:
+      "Utilizing our Creative and Branding services provides numerous benefits that can greatly enhance your brand\u2019s market presence. First and foremost, we help establish a strong brand identity that stands out, leading to increased recognition and recall among your target audience.\n\nOur services ensure consistent messaging across all platforms, building trust and credibility with stakeholders. By creating engaging content and visual elements, we encourage interaction and foster customer loyalty. Additionally, our high-quality branding materials project professionalism, elevating the brand.\n\nWe focus on targeted marketing strategies that address specific audience needs, enhancing your brand\u2019s position in a competitive landscape. Our compelling narratives and visuals evoke emotions, helping to build deeper connections with consumers and increasing brand loyalty.\n\nOur adaptable branding solutions evolve with market trends, ensuring relevance over time. We provide ongoing support to refine strategies and navigate market shifts while delivering measurable results that allow you to assess the impact of your branding efforts on growth and engagement.",
+    faqs: [
+      {
+        question:
+          "What types of branding and creative services do you offer?",
+        answer:
+          "We offer a comprehensive range of branding services, including brand strategy development, visual identity design, marketing collateral creation, website design, social media branding, content creation, public relations, photography, and event branding. Our goal is to provide tailored solutions that elevate your brand.",
+      },
+      {
+        question:
+          "How do you ensure brand consistency across different platforms?",
+        answer:
+          "We create detailed brand guidelines that outline how your brand should be represented across various platforms and materials. This includes specifications for logo usage, color palettes, typography, and messaging. By adhering to these guidelines, we ensure that your brand maintains a cohesive presence.",
+      },
+      {
+        question:
+          "How can your branding services help increase customer engagement?",
+        answer:
+          "Our branding services focus on developing compelling content and visuals that resonate with your target audience. By crafting emotionally engaging narratives and utilizing attractive designs, we encourage interaction and foster loyalty, ultimately leading to increased customer engagement.",
+      },
+      {
+        question:
+          "What is the typical timeline for a branding project?",
+        answer:
+          "The timeline for a branding project can vary depending on the scope and complexity of the services required. Generally, a comprehensive branding project may take anywhere from a few weeks to several months. We work closely with clients to establish a timeline that meets their needs.",
+      },
+      {
+        question:
+          "How do you measure the success of branding efforts?",
+        answer:
+          "We implement tracking and analytics tools to measure the effectiveness of our branding initiatives. Key performance indicators such as brand awareness, audience engagement, website traffic, and conversion rates are assessed. This data allows us to evaluate the impact of our branding efforts.",
       },
     ],
   },

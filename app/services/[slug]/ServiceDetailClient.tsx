@@ -1,12 +1,15 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ScrollReveal } from "@/components/animations/ScrollReveal";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowLeft,
   ArrowRight,
   CaretRight,
+  CaretDown,
   PlayCircle,
   FilePdf,
 } from "@phosphor-icons/react";
@@ -235,6 +238,107 @@ export default function ServiceDetailClient({
         </section>
       )}
 
+      {/* ───── APPROACH (text-only pages) ───── */}
+      {!hasMedia &&
+        (service.approachText || service.approachPoints) && (
+          <section className="py-[60px] md:py-[80px] px-6 md:px-[50px]">
+            <div className="max-w-4xl">
+              <ScrollReveal variant="slideUp">
+                <h3 className="font-mono text-xs uppercase tracking-wider text-accent-orange mb-6">
+                  {service.approachTitle || "Our Approach"}
+                </h3>
+              </ScrollReveal>
+              {service.approachText && (
+                <ScrollReveal variant="slideUp" delay={0.1}>
+                  <div className="space-y-4 mb-8">
+                    {service.approachText.split("\n\n").map((p, i) => (
+                      <p
+                        key={i}
+                        className="text-[16px] leading-[26px] tracking-[-0.16px] text-dark/70"
+                      >
+                        {p}
+                      </p>
+                    ))}
+                  </div>
+                </ScrollReveal>
+              )}
+              {service.approachPoints && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  {service.approachPoints.map((point, index) => (
+                    <ScrollReveal
+                      key={point.title}
+                      variant="slideUp"
+                      delay={index * 0.08}
+                    >
+                      <div className="bg-cream-dark rounded-xl p-6 h-full">
+                        <h4 className="text-[17px] leading-[24px] tracking-[-0.34px] font-semibold text-dark mb-2">
+                          {point.title}
+                        </h4>
+                        <p className="text-[15px] leading-[22px] tracking-[-0.15px] text-dark/60">
+                          {point.description}
+                        </p>
+                      </div>
+                    </ScrollReveal>
+                  ))}
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
+      {/* ───── BENEFITS (text-only pages) ───── */}
+      {!hasMedia &&
+        (service.benefitsText || service.benefitPoints) && (
+          <section className="py-[60px] md:py-[80px] px-6 md:px-[50px] bg-cream-dark/30">
+            <div className="max-w-4xl">
+              <ScrollReveal variant="slideUp">
+                <h3 className="font-mono text-xs uppercase tracking-wider text-accent-orange mb-6">
+                  {service.benefitsTitle || "Benefits"}
+                </h3>
+              </ScrollReveal>
+              {service.benefitsText && (
+                <ScrollReveal variant="slideUp" delay={0.1}>
+                  <div className="space-y-4 mb-8">
+                    {service.benefitsText.split("\n\n").map((p, i) => (
+                      <p
+                        key={i}
+                        className="text-[16px] leading-[26px] tracking-[-0.16px] text-dark/70"
+                      >
+                        {p}
+                      </p>
+                    ))}
+                  </div>
+                </ScrollReveal>
+              )}
+              {service.benefitPoints && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  {service.benefitPoints.map((point, index) => (
+                    <ScrollReveal
+                      key={point.title}
+                      variant="slideUp"
+                      delay={index * 0.08}
+                    >
+                      <div className="bg-cream rounded-xl p-6 h-full border border-dark/5">
+                        <h4 className="text-[17px] leading-[24px] tracking-[-0.34px] font-semibold text-dark mb-2">
+                          {point.title}
+                        </h4>
+                        <p className="text-[15px] leading-[22px] tracking-[-0.15px] text-dark/60">
+                          {point.description}
+                        </p>
+                      </div>
+                    </ScrollReveal>
+                  ))}
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
+      {/* ───── FAQs (text-only pages) ───── */}
+      {!hasMedia && service.faqs && service.faqs.length > 0 && (
+        <FAQSection faqs={service.faqs} />
+      )}
+
       {/* ───── CTA ───── */}
       <section className="py-[60px] md:py-[80px] px-6 md:px-[50px]">
         <ScrollReveal>
@@ -296,5 +400,62 @@ export default function ServiceDetailClient({
         </div>
       </section>
     </main>
+  );
+}
+
+/* ─── FAQ Accordion Component ─── */
+function FAQSection({ faqs }: { faqs: { question: string; answer: string }[] }) {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  return (
+    <section className="py-[60px] md:py-[80px] px-6 md:px-[50px]">
+      <div className="max-w-4xl">
+        <ScrollReveal variant="slideUp">
+          <h3 className="font-mono text-xs uppercase tracking-wider text-accent-orange mb-10">
+            Frequently Asked Questions
+          </h3>
+        </ScrollReveal>
+        <div className="flex flex-col gap-3">
+          {faqs.map((faq, index) => (
+            <ScrollReveal key={index} variant="slideUp" delay={index * 0.06}>
+              <div className="border border-dark/10 rounded-xl overflow-hidden">
+                <button
+                  onClick={() =>
+                    setOpenIndex(openIndex === index ? null : index)
+                  }
+                  className="w-full flex items-center justify-between gap-4 p-5 text-left hover:bg-cream-dark/50 transition-colors"
+                >
+                  <span className="text-[16px] leading-[22px] tracking-[-0.16px] font-medium text-dark">
+                    {faq.question}
+                  </span>
+                  <CaretDown
+                    size={18}
+                    weight="bold"
+                    className={`text-dark/40 flex-shrink-0 transition-transform duration-300 ${
+                      openIndex === index ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                <AnimatePresence>
+                  {openIndex === index && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <p className="px-5 pb-5 text-[15px] leading-[24px] tracking-[-0.15px] text-dark/60">
+                        {faq.answer}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
